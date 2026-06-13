@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public float Inertia;
 
     [Header("Jump")]
-    [Range(0f, 7f)]
+    [Range(0f, 12f)]
     public float JumpForce;
     [Range(0f, 1f)]
     public float JumpTorque;
