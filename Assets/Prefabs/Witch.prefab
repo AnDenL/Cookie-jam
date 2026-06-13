@@ -189,7 +189,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 11400000, guid: d6c99f0aa0c1e36499a761614f448575, type: 2}
   VisionRange: 16
-  skillTemplates: []
+  inventory:
+    maxSlots: 20
+    items: []
+  skillTemplates:
+  - {fileID: 11400000, guid: 80f860197e912cf4faebb54fe358dd8d, type: 2}
   passiveTemplates: []
   Speed: 5
   baseMovementSkill: {fileID: 11400000, guid: e9b7f20b8a5f3344eb96c2fbc9a4ba6e, type: 2}

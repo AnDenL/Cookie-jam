@@ -15,8 +15,8 @@ public class Creature : MonoBehaviour
     [SerializeField] protected AIController controller;
     public float VisionRange = 8f;
 
-    //[SerializeField] protected Inventory inventory;
-    //public Inventory Inventory => inventory;
+    [SerializeField] protected Inventory inventory;
+    public Inventory Inventory => inventory;
 
     public AIController Controller => controller;
     public Alignment AlignmentEditable { get => controller.Alignment; set => controller.Alignment = value; }
@@ -103,7 +103,7 @@ public class Creature : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
         Source = GetComponent<AudioSource>();
 
-        //inventory = new();
+        inventory = new();
 
         creatureLayerMask = LayerMask.GetMask("Creature");
         wallsLayerMask = LayerMask.GetMask("Walls");
@@ -177,10 +177,10 @@ public class Creature : MonoBehaviour
     #endregion
     #region Public Methods
 
-    // public int AddItem(Item item, int count = 1) => inventory.AddItem(item, count);
-    // public int AddItem(ItemStack stack) => inventory.AddItem(stack.Item, stack.Count);
-    // public bool RemoveItem(Item item, int count = 1) => inventory.RemoveItem(item, count);
-    // public int GetItemCount(Item item) => inventory.GetItemCount(item);
+    public int AddItem(Item item, int count = 1) => inventory.AddItem(item, count);
+    public int AddItem(ItemStack stack) => inventory.AddItem(stack.Item, stack.Count);
+    public bool RemoveItem(Item item, int count = 1) => inventory.RemoveItem(item, count);
+    public int GetItemCount(Item item) => inventory.GetItemCount(item);
 
     public void AddEffect(Effect effect)
     {
@@ -320,19 +320,19 @@ public class Creature : MonoBehaviour
         Source.PlayOneShot(clip);
     }
 
-    // public void DropItems()
-    // {
-    //     GameObject item = Game.GlobalObjects[0];
+    public void DropItems()
+    {
+        GameObject item = Game.GlobalObjects[0];
 
-    //     foreach (var stack in inventory.items)
-    //     {
-    //         var i = Instantiate(item, transform);
-    //         i.transform.parent = null;
-    //         i.GetComponent<ItemPickUp>().Set(stack);
-    //         i.GetComponent<ArcAnim>().DropTo(transform.position + (Vector3)UnityEngine.Random.insideUnitCircle);
-    //     }
-    //     inventory.items = new();
-    // }
+        foreach (var stack in inventory.items)
+        {
+            var i = Instantiate(item, transform);
+            i.transform.parent = null;
+            i.GetComponent<ItemPickUp>().Set(stack);
+            i.GetComponent<ArcAnim>().DropTo(transform.position + (Vector3)UnityEngine.Random.insideUnitCircle);
+        }
+        inventory.items = new();
+    }
 
     public virtual void Heal(float value) => HealthComponent.Heal(value);
     public virtual void TakeDamage(float value) => HealthComponent.TakeHit(value);
@@ -349,7 +349,7 @@ public class Creature : MonoBehaviour
     }    
     protected void OnDeath()
     {
-        //DropItems();
+        DropItems();
         Break();
         Animator.SetBool(_isDeadHash, true);
     }

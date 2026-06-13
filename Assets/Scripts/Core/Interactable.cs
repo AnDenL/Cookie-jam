@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    [SerializeField] protected GameObject key;
     [SerializeField] protected Material outlineMaterial;
     [SerializeField] protected SpriteRenderer sr;
+    [SerializeField] protected bool canBeInteracted = true;
 
     protected Material defaultMaterial;
 
