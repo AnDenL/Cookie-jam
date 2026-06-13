@@ -7,7 +7,11 @@ public class CameraTarget : MonoBehaviour
     [Range(1,10)]
     [SerializeField] private int speed = 6;
     [SerializeField] private Transform target;
-    
+
+    private void Start()
+    {
+        Game.mainCamera = GetComponent<Camera>();
+    }
 
     private void Update()
     {

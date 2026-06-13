@@ -1,55 +1,121 @@
+using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    [Header("Speed")]
-    [Range(0f, 2f)]
-    public float Speed;
-    [Range(0f, 1f)]
-    public float Inertia;
+    public static bool IsControlable = true,NeedToFlip = true;
+    static public Player mainPlayer;
 
-    [Header("Jump")]
-    [Range(0f, 12f)]
-    public float JumpForce;
-    [Range(0f, 1f)]
-    public float JumpTorque;
-    [Range(0f, 0.5f)]
-    public float CoyotteTime;
-    public Transform GroundPoint;
-    public LayerMask GroundLayer;
+    //public Inventory Inventory;
 
+    [HideInInspector] public GameObject HandItem;
+    [HideInInspector] public AudioSource audioSource;
+    [HideInInspector] public Vector2 additionalVelocity;
+
+    [SerializeField] private float moveSpeed = 5f;
+
+    private LayerMask layer;
+    private Vector2 moveDirection;
     private Rigidbody2D rb;
-    private float lastGroundedTime;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private Interactable lastInteractable;
+
+    private void Awake()
+    {
+        //Inventory = new Inventory();
+        mainPlayer = this;
+    }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
+        HandItem = transform.GetChild(0).gameObject;
+        layer = 1 << 3;
     }
 
     private void FixedUpdate()
     {
-        var input = new Vector2(
-            Input.GetAxisRaw("Horizontal"),
-            Input.GetAxisRaw("Vertical")
-        );
+        if (!IsControlable)
+        {
+            rb.velocity = Vector2.zero;
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 0);
+            return;
+        }
+        moveDirection.x = Input.GetAxisRaw("Horizontal");
+        moveDirection.y = Input.GetAxisRaw("Vertical");
 
-        rb.velocity = new Vector2(rb.velocity.x * Inertia + Speed * input.x, rb.velocity.y);
+        if (NeedToFlip)
+        {
+            if (moveDirection.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (moveDirection.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+        }
+        animator.SetFloat("Horizontal", Mathf.Abs(moveDirection.x));
+        animator.SetFloat("Vertical", moveDirection.y);
+
+        if (moveDirection.magnitude > 1f)
+        {
+            moveDirection.Normalize();
+        }
+
+        rb.velocity = moveDirection * moveSpeed + additionalVelocity;
     }
-
+    
     private void Update()
     {
-        if (IsGrounded()) lastGroundedTime = Time.time;
+        CheckInteractions();
+    }
+    public void CheckInteractions()
+    {
+        var temp = Physics2D.OverlapCircleAll(transform.position, 3f, layer);
 
-        if (Input.GetKeyDown(KeyCode.Space) && lastGroundedTime > Time.time - CoyotteTime)
+        if (temp.Length == 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, JumpForce);
+            lastInteractable?.HideKey();
+            lastInteractable = null;
+            return;
         }
-        else if (rb.velocity.y > 0 && Input.GetKeyUp(KeyCode.Space))
+
+        Collider2D nearestCollider = null;
+        float nearestDistance = float.MaxValue;
+
+        foreach (var collider in temp)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * JumpTorque);
+            if (collider.CompareTag("Interactable"))
+            {
+                float distance = Vector2.Distance(transform.position, collider.transform.position);
+                if (distance < nearestDistance)
+                {
+                    nearestCollider = collider;
+                    nearestDistance = distance;
+                }
+            }
+        }
+
+        if (nearestCollider)
+        {
+            lastInteractable?.HideKey();
+
+            lastInteractable = nearestCollider.GetComponent<Interactable>();
+            lastInteractable.ShowKey();
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (nearestCollider.TryGetComponent(out Interactable interactable))
+                {
+                    interactable.Interact(this);
+                }
+            }
         }
     }
-
-    private bool IsGrounded() => Physics2D.OverlapCircleAll(GroundPoint.position, 0.1f, GroundLayer).Length > 1;
-}
+} 
