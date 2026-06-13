@@ -10,7 +10,7 @@ public class Minimap : MonoBehaviour
     public float Scale = 2;
     public bool IsOpened;
     
-    private float currentZoom = 4;
+    private float currentZoom = 2;
     private Vector2 fullMapPos;
     private Vector2 startDragMouse, startDragPos;
 
