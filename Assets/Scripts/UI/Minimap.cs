@@ -7,6 +7,7 @@ public class Minimap : MonoBehaviour
     public static Minimap Instance;
     public Image Map, Fullmap;
     public Camera RenderCamera;
+    public float Scale = 2;
     public bool IsOpened;
     
     private float currentZoom = 4;
@@ -24,7 +25,7 @@ public class Minimap : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         Map.transform.localScale = Vector2.one * currentZoom;
-        Fullmap.transform.localScale = Map.transform.localScale * 4;
+        Fullmap.transform.localScale = Map.transform.localScale * 2;
         //Set(new Vector2Int(450, 450));
     }
 
@@ -53,7 +54,7 @@ public class Minimap : MonoBehaviour
             Fullmap.transform.position = fullMapPos;
         }
 
-        Map.transform.localPosition = -PlayerController.Player.transform.position * currentZoom;
+        Map.transform.localPosition = -PlayerController.Player.transform.position * currentZoom * Scale;
     }
 
     public void Zoom()
@@ -63,9 +64,9 @@ public class Minimap : MonoBehaviour
         float previousZoom = currentZoom;
 
         currentZoom += Input.mouseScrollDelta.y > 0 ? 0.5f : -0.5f;
-        currentZoom = Mathf.Clamp(currentZoom, 1, 8);
+        currentZoom = Mathf.Clamp(currentZoom, 0.5f, 4);
         Map.transform.localScale = Vector2.one * currentZoom;
-        Fullmap.transform.localScale = Map.transform.localScale * 4;
+        Fullmap.transform.localScale = Map.transform.localScale * 2;
 
         Vector2 halfScreen = new Vector2(Screen.width, Screen.height) / 2;
 

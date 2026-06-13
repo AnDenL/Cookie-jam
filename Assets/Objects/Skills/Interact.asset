@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Priority: 0
-  cooldownTime: 0
+  cooldownTime: 0.5
   interactMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
