@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7324290186491752865}
   - component: {fileID: 9149724250673718751}
   - component: {fileID: -2374648994453960474}
+  - component: {fileID: 4111744038948076387}
+  - component: {fileID: 3409139835123340029}
   m_Layer: 0
   m_Name: ForestObjects_18
   m_TagString: Untagged
@@ -120,3 +122,36 @@ CircleCollider2D:
   m_Offset: {x: -0.03125, y: 0.15625}
   serializedVersion: 2
   m_Radius: 0.46875
+--- !u!114 &4111744038948076387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384372485950935784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1714d37627b7eb14c81cdc2766330747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  maxHealth: 1
+  isDead: 0
+--- !u!114 &3409139835123340029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384372485950935784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0708e8fb75c97854dacfa31bd99bc77d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drop:
+  - itemStack:
+      Item: {fileID: 11400000, guid: f9aaaf7b5b9ec3944a052c0277f949d9, type: 2}
+      Count: 1
+    chance: 100
+  itemPrefab: {fileID: 217059824956293481, guid: 91e24390e2196af44b223908b74b1bfa, type: 3}

@@ -32,7 +32,7 @@ public class Nature : MonoBehaviour
     private float lastHeavyRain;
 
     private float hourProgress;
-    private float rainAmout;
+    private float rainAmount;
     private float rainAmoutPreviousHour;
     private bool isNight;
 
@@ -55,8 +55,8 @@ public class Nature : MonoBehaviour
         float normalizedTime = totalHours / 24f;
 
         Light.color = lightColorOverDay.Evaluate(normalizedTime);
-        rainAmout = Mathf.Lerp(rainAmoutPreviousHour, rainDuringHour, t);
-        rainEmission.rateOverTime = rainAmout;
+        rainAmount = Mathf.Lerp(rainAmoutPreviousHour, rainDuringHour, t);
+        rainEmission.rateOverTime = rainAmount;
 
         lightRainSounds.volume = Mathf.Lerp(lastLightRain, targetLightRain, t);
         heavyRainSounds.volume = Mathf.Lerp(lastHeavyRain, targetHeavyRain, t);
@@ -118,7 +118,7 @@ public class Nature : MonoBehaviour
 
         rainDuringHour = Mathf.Clamp(rainDuringHour, 0f, 900f);
 
-        rain.gameObject.SetActive(rainDuringHour > 0 || rainAmout > 0);
+        rain.gameObject.SetActive(rainDuringHour > 0 || rainAmount > 0);
 
         targetLightRain = rainDuringHour != 0 ? Mathf.Lerp(0.5f, 1f, Mathf.Min(400f, rainDuringHour) / 400f) : 0f;
         targetHeavyRain = rainDuringHour > 400f ? Mathf.Lerp(0.3f, 1f, (rainDuringHour - 400f) / 500f) : 0f;
