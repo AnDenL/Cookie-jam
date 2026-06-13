@@ -18,7 +18,11 @@ namespace Creatures
 
         public override void Activate(Vector2 position)
         {
-            owner.transform.position += Owner.Speed * Speed * Time.deltaTime * (Vector3)position;
+            var speed = Owner.Speed * Speed * Time.deltaTime;
+            owner.transform.position += speed * (Vector3)position;
+            Generation.lastCheckTime -= speed;
+            owner.Animator.SetFloat("Horizontal", Mathf.Abs(position.x));
+            owner.Animator.SetFloat("Vertical", position.y);
         }
     }
 }

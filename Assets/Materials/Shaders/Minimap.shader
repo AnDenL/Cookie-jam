@@ -6,6 +6,7 @@ Shader "UI/Minimap"
         _Color ("Tint", Color) = (1,1,1,1)
 
         _FogTex ("Fog Mask (R)", 2D) = "white" {}
+        _MinimapTex ("Fog Mask (R)", 2D) = "white" {}
 
         _StencilComp ("Stencil Comparison", Float) = 8
         _Stencil ("Stencil ID", Float) = 0
@@ -83,6 +84,7 @@ Shader "UI/Minimap"
             float4 _MainTex_ST;
 
             sampler2D _FogTex; 
+            sampler2D _MinimapTex; 
 
             v2f vert(appdata_t v)
             {
@@ -100,7 +102,7 @@ Shader "UI/Minimap"
 
             fixed4 frag(v2f IN) : SV_Target
             {
-                half4 color = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
+                half4 color = (tex2D(_MinimapTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
 
                 half4 fogValue = tex2D(_FogTex, IN.texcoord);
 

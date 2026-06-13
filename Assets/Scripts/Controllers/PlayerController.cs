@@ -70,8 +70,13 @@ namespace Creatures
         {
             if (!CanInteract)
                 return;
+            
+            owner.Rb.velocity = Vector2.zero;
+            owner.Animator.SetFloat("Horizontal", 0);
+            owner.Animator.SetFloat("Vertical", 0);
 
             Vector2 moveDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+            owner.Animator.SetBool("FacingCursor", moveDir.x * owner.transform.localScale.x > 0);
 
             owner.LookAt(Game.mainCamera.ScreenToWorldPoint(Input.mousePosition));
 

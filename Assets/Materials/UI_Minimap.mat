@@ -24,11 +24,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _FogTex:
-        m_Texture: {fileID: 8400000, guid: dd339f9bdf8a9074eb843142b66053cd, type: 2}
+        m_Texture: {fileID: 8400000, guid: 7ac84e1dca2acd54faedc505e31c4ad3, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MinimapTex:
+        m_Texture: {fileID: 8400000, guid: a8e7421573a128b4ca63b5a56c701527, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []

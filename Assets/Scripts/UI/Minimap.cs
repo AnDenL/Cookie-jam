@@ -25,7 +25,7 @@ public class Minimap : MonoBehaviour
         animator = GetComponent<Animator>();
         Map.transform.localScale = Vector2.one * currentZoom;
         Fullmap.transform.localScale = Map.transform.localScale * 4;
-        Set(new Vector2Int(4000, 3000));
+        //Set(new Vector2Int(450, 450));
     }
 
     private void Switch()
@@ -54,44 +54,6 @@ public class Minimap : MonoBehaviour
         }
 
         Map.transform.localPosition = -PlayerController.Player.transform.position * currentZoom;
-    }
-
-    public void Set(Vector2Int mapSize)
-    {
-        RenderTexture rt = new(mapSize.x, mapSize.y, 16)
-        {
-            filterMode = FilterMode.Point
-        };
-
-        RenderCamera.targetTexture = rt; 
-
-        RenderCamera.gameObject.SetActive(true);
-        RenderCamera.orthographicSize = mapSize.x / 2f;
-
-        RenderCamera.Render();
-
-        RenderTexture currentActiveRT = RenderTexture.active;
-        RenderTexture.active = rt;
-
-        Texture2D texture2D = new(rt.width, rt.height, TextureFormat.RGBA32, false)
-        {
-            filterMode = FilterMode.Point
-        };
-        texture2D.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0);
-        texture2D.Apply();
-
-        RenderTexture.active = currentActiveRT;
-        RenderCamera.gameObject.SetActive(false);
-        
-        RenderCamera.targetTexture = null;
-        rt.Release();
-
-        Sprite sprite = Sprite.Create(texture2D, new Rect(0, 0, mapSize.x, mapSize.y), new Vector2(0.5f, 0.5f), 16);
-        Map.sprite = sprite;
-        Fullmap.sprite = sprite;
-
-        Map.transform.localScale = Vector2.one * currentZoom;
-        Fullmap.transform.localScale = Map.transform.localScale * 4;
     }
 
     public void Zoom()

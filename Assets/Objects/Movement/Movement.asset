@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Walk
   Priority: 0
   cooldownTime: 0
-  Speed: 3
+  Speed: 1.5

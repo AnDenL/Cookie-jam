@@ -229,7 +229,7 @@ public class Creature : MonoBehaviour
             FacingRight = false;
         }
 
-        Animator.SetBool(_lookUpHash, position.y > transform.position.y + 1.5f);
+        //Animator.SetBool(_lookUpHash, position.y > transform.position.y + 1.5f);
     }
 
     public void UpdateAnimationState()
