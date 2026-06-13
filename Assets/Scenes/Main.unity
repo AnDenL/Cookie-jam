@@ -199,6 +199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Companion (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8808465474076721703, guid: 11047f0c5740f2c4c90f0d1eef2b3899, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1166,7 +1170,7 @@ GameObject:
   - component: {fileID: 1322331334}
   - component: {fileID: 1322331333}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1192,7 +1196,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c84f014e1a9055b4280c9b2b7bd9b901, type: 2}
+  - {fileID: 2100000, guid: 75c1b81d96784c94eb10a7001e8d11eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1213,12 +1217,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18e60462287ec2b448abaa0aec73b393, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1310,6 +1314,10 @@ PrefabInstance:
     - target: {fileID: 8808465474076721703, guid: 11047f0c5740f2c4c90f0d1eef2b3899, type: 3}
       propertyPath: m_Name
       value: Companion (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808465474076721703, guid: 11047f0c5740f2c4c90f0d1eef2b3899, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1519,6 +1527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Companion (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8808465474076721703, guid: 11047f0c5740f2c4c90f0d1eef2b3899, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1698,6 +1710,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Companion (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8808465474076721703, guid: 11047f0c5740f2c4c90f0d1eef2b3899, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1777,6 +1793,10 @@ PrefabInstance:
     - target: {fileID: 8808465474076721703, guid: 11047f0c5740f2c4c90f0d1eef2b3899, type: 3}
       propertyPath: m_Name
       value: Companion
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808465474076721703, guid: 11047f0c5740f2c4c90f0d1eef2b3899, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
