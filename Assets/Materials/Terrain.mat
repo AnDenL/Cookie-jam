@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Grass
-  m_Shader: {fileID: -6465566751694194690, guid: bb3ba993f1603a749b55eeac2000e072, type: 3}
+  m_Name: Terrain
+  m_Shader: {fileID: -6465566751694194690, guid: dc1fac426f1459a40bbbbe498e3d230d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f1a2b5ebf49855442a6f391c2e0c18d8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Snow:
@@ -53,17 +53,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Scale: 0.005
+    - _Scale: 0.001
     - _Size: 0.5
-    - _Weigth: 0.7
+    - _Weigth: 0.85
     - _power: 500
     m_Colors:
-    - _1: {r: -3813.1812, g: 463.9043, b: 0, a: 0}
-    - _2: {r: -5415.3257, g: -2102.7776, b: 0, a: 0}
-    - _3: {r: 2870.811, g: -5867.45, b: 0, a: 0}
-    - _4: {r: -2990.603, g: -4464.042, b: 0, a: 0}
+    - _1: {r: 2745.2861, g: -8945.995, b: 0, a: 0}
+    - _2: {r: -1361.1143, g: -1768.697, b: 0, a: 0}
+    - _3: {r: -2165.0647, g: -4662.0845, b: 0, a: 0}
+    - _4: {r: -6801.7856, g: -7199.0503, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &6915254749682951340
+--- !u!114 &6523651850672283668
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

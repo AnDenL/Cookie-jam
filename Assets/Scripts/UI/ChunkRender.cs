@@ -5,6 +5,7 @@ public class ChunkRender : MonoBehaviour
 {
     private static ChunkRender instance;
 
+    [SerializeField] private GameObject globalLight;
     private Camera RenderCamera;
 
     private void Awake()
@@ -17,6 +18,7 @@ public class ChunkRender : MonoBehaviour
 
     public static Sprite Render(Vector2Int position)
     {
+        instance.globalLight.SetActive(false);
         instance.RenderCamera.enabled = true;
         instance.transform.position = (Vector2)position * 16;
 
@@ -46,6 +48,7 @@ public class ChunkRender : MonoBehaviour
 
         instance.RenderCamera.targetTexture = null;
         rt.Release();
+        instance.globalLight.SetActive(true);
         
         return Sprite.Create(texture2D, new Rect(0, 0, 16, 16), new Vector2(0.5f, 0.5f), 1);
     }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Creatures;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,15 +11,21 @@ public class Minimap : MonoBehaviour
     public float Scale = 2;
     public bool IsOpened;
     
+    public GameObject chunkPrefab;
+
+    private Dictionary<Vector2Int,SpriteRenderer> chunks;
+
     private float currentZoom = 2;
     private Vector2 fullMapPos;
     private Vector2 startDragMouse, startDragPos;
+
 
     private Animator animator;
 
     private void Awake()
     {
         Instance = this;
+        chunks = new();
     }
 
     private void Start()
@@ -34,6 +41,16 @@ public class Minimap : MonoBehaviour
         IsOpened = !IsOpened;
 
         animator.SetBool("Opened", IsOpened);
+    }
+
+    public static void DrawMapChunk(Vector2Int position)
+    {
+        if (!Instance.chunks.TryGetValue(position, out SpriteRenderer sr)) 
+        {
+            sr = Instantiate(Instance.chunkPrefab, (Vector2)position * 16, Quaternion.identity).GetComponent<SpriteRenderer>();
+            Instance.chunks.Add(position, sr);
+        }
+        sr.sprite = ChunkRender.Render(position);
     }
 
     public void Update()
