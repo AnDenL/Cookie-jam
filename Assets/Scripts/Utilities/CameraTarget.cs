@@ -1,4 +1,5 @@
 using System;
+using Creatures;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -11,6 +12,7 @@ public class CameraTarget : MonoBehaviour
     private void Start()
     {
         Game.mainCamera = GetComponent<Camera>();
+        if (target == null) target = PlayerController.Player.transform;
     }
 
     private void Update()
