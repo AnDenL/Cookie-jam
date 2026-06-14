@@ -11,7 +11,7 @@ public class CreaturesManager : MonoBehaviour
     public int CreaturePerFrame = 2;
 
     private readonly float activationDistSqr = 1225;
-    private readonly Queue<Creature> creatureQueue= new();
+    private readonly Queue<Creature> creatureQueue = new();
 
     private void Awake()
     {
@@ -46,8 +46,8 @@ public class CreaturesManager : MonoBehaviour
 
     private void UpdateEnemyState(Creature creature, Vector2 playerPos)
     {
+        // deactivate creatures if they are too far
         float distSqr = ((Vector2)creature.transform.position - playerPos).sqrMagnitude;
-        
         creature.IsActive = distSqr < activationDistSqr;
     }
 }
