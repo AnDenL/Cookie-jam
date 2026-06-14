@@ -20,6 +20,7 @@ public class Nature : MonoBehaviour
     [SerializeField] private float rainReductionPerHour;
     [SerializeField] private float rainChance;
     [SerializeField] private ParticleSystem rain;
+    [SerializeField] private ParticleSystem snow;
 
     [Header("Audio Sources")]
     [SerializeField] private AudioSource nightSounds;
@@ -32,18 +33,20 @@ public class Nature : MonoBehaviour
     private float lastHeavyRain;
 
     private float hourProgress;
-    private float rainAmount;
+    private float precipitationAmount;
     private float rainAmoutPreviousHour;
     private bool isNight;
 
     private ParticleSystem.EmissionModule rainEmission;
-
+    private ParticleSystem.EmissionModule snowEmission;
+    
     public event Action<int> NextHour;
     public event Action<int> NewDay;
 
     private void Start()
     {
         rainEmission = rain.emission;
+        snowEmission = snow.emission;
         StartCoroutine(HourTimer());
     }
 
@@ -55,11 +58,28 @@ public class Nature : MonoBehaviour
         float normalizedTime = totalHours / 24f;
 
         Light.color = lightColorOverDay.Evaluate(normalizedTime);
-        rainAmount = Mathf.Lerp(rainAmoutPreviousHour, rainDuringHour, t);
-        rainEmission.rateOverTime = rainAmount;
-
-        lightRainSounds.volume = Mathf.Lerp(lastLightRain, targetLightRain, t);
-        heavyRainSounds.volume = Mathf.Lerp(lastHeavyRain, targetHeavyRain, t);
+        precipitationAmount = Mathf.Lerp(rainAmoutPreviousHour, rainDuringHour, t);
+        if (Generation.CurrentBiome == Biome.Field || Generation.CurrentBiome == Biome.Forest) 
+        {  
+            rainEmission.rateOverTime = precipitationAmount;
+            snowEmission.rateOverTime = 0;
+            lightRainSounds.volume = Mathf.Lerp(lastLightRain, targetLightRain, t);
+            heavyRainSounds.volume = Mathf.Lerp(lastHeavyRain, targetHeavyRain, t);
+        }
+        else if (Generation.CurrentBiome == Biome.Snow)
+        {
+            rainEmission.rateOverTime = 0;
+            snowEmission.rateOverTime = precipitationAmount / 3;
+            lightRainSounds.volume = Mathf.Lerp(lightRainSounds.volume, 0, Time.deltaTime * 2);
+            heavyRainSounds.volume = Mathf.Lerp(heavyRainSounds.volume, 0, Time.deltaTime * 2);
+        }
+        else
+        {
+            rainEmission.rateOverTime = 0;
+            snowEmission.rateOverTime = 0;
+            lightRainSounds.volume = Mathf.Lerp(lightRainSounds.volume, 0, Time.deltaTime * 2);
+            heavyRainSounds.volume = Mathf.Lerp(heavyRainSounds.volume, 0, Time.deltaTime * 2);
+        }
     }
 
     private IEnumerator HourTimer()
@@ -118,7 +138,9 @@ public class Nature : MonoBehaviour
 
         rainDuringHour = Mathf.Clamp(rainDuringHour, 0f, 900f);
 
-        rain.gameObject.SetActive(rainDuringHour > 0 || rainAmount > 0);
+        bool Weather = rainDuringHour > 0 || precipitationAmount > 0;
+        rain.gameObject.SetActive(Weather);
+        snow.gameObject.SetActive(Weather);
 
         targetLightRain = rainDuringHour != 0 ? Mathf.Lerp(0.5f, 1f, Mathf.Min(400f, rainDuringHour) / 400f) : 0f;
         targetHeavyRain = rainDuringHour > 400f ? Mathf.Lerp(0.3f, 1f, (rainDuringHour - 400f) / 500f) : 0f;

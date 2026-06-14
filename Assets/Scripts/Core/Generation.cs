@@ -1,14 +1,13 @@
-using System;
 using System.Collections.Generic;
 using Creatures;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Generation : MonoBehaviour
 {
     public static Generation instance;
     public static GameObject[] Prefabs;
+    public static Biome CurrentBiome;
 
     [SerializeField] private GameObject[] prefabs;
 
@@ -46,14 +45,6 @@ public class Generation : MonoBehaviour
         terrain.SetVector("_5", offsets[4]);
         terrain.SetVector("_6", offsets[5]);
 
-        for (int i = -64; i < 64; i++)
-        {
-            for (int j = -64; j < 64; j++)
-            {
-                CheckBiome(new Vector2Int(i,j));
-            }
-        }
-
         ValidateAround(Vector2Int.zero);
         minimapCamera.Render();
     }
@@ -85,7 +76,7 @@ public class Generation : MonoBehaviour
             Vector2Int position = Vector2Int.FloorToInt((PlayerController.Player.transform.position + Vector3.one * 8) / 16);
             ValidateAround(position);
 
-            print(CheckBiome(position).ToShortString());
+            CurrentBiome = CheckBiome(position);
 
             if (chunks.Count > 60)
             {
@@ -125,30 +116,20 @@ public class Generation : MonoBehaviour
         float s2 = GetPixel(position * 16 + offsets[1]);
         float s = s1 * s2;
         float f = GetPixel(position * 16 + offsets[2], 0.3f) * GetPixel(position * 16 + offsets[3]);
-        float h = Mathf.Clamp(Mathf.Clamp((GetPixel(position * 16 + offsets[4], 0.3f) + GetPixel(position * 16 + offsets[5])) * 0.7f, 0, 1) - (s1 + s2), 0, 1);
-
-        print("S " + s);
-        print("F " + f);
-        print("H " + h);
+        float h = Mathf.Clamp(Mathf.Clamp((GetPixel(position * 16 + offsets[4], 0.3f) + GetPixel(position * 16 + offsets[5])) * 0.66f, 0, 1) - ((s1 + s2)/2), 0, 1);
         
-        GameObject sq = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        sq.transform.position = (Vector2)position * 16;
-        sq.transform.localScale = Vector3.one * 4;
-
-        if (h > 0) { 
-            sq.GetComponent<MeshRenderer>().material.color = Color.red;
+        if (h > 0.45f) 
+        { 
             return Biome.Forest;
         }
         if (s > 0.45f) 
         {
-            sq.GetComponent<MeshRenderer>().material.color = Color.blue;
             return Biome.Snow;
         }
-        if (f > 0.45f) {
-            sq.GetComponent<MeshRenderer>().material.color = Color.black;
+        if (f > 0.45f) 
+        {
             return Biome.Forest;
         }
-        sq.GetComponent<MeshRenderer>().material.color = Color.green;
 
         return Biome.Field;
     }
