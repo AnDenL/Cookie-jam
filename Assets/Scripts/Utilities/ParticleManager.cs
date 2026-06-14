@@ -1,5 +1,4 @@
 using UnityEngine;
-using Creatures;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -9,9 +8,6 @@ public class ParticleManager : MonoBehaviour
     public static Dictionary<string, int> ParticleIndices = new();
 
     public ParticleSystem[] ParticleSystems = new ParticleSystem[0];
-    public ParticleSystem[] ResourceParticles = new ParticleSystem[0];
-
-    private ParticlePool[] resourceParticlePools;
 
     private void Awake()
     {
@@ -29,8 +25,6 @@ public class ParticleManager : MonoBehaviour
         ParticleIndices = ParticleSystems
             .Select((ps, index) => new { ps, index })
             .ToDictionary(x => x.ps.name, x => x.index);
-
-        resourceParticlePools = ResourceParticles.Select(ps => new ParticlePool(ps, 5, transform)).ToArray();
     }
 
     public static void PlayParticle(string name, Vector2 position, int amount) 
