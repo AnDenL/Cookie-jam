@@ -5,21 +5,17 @@ using System.Linq;
 [Serializable]
 public class Inventory
 {
-    static public Inventory Instance;
-
     public int maxSlots = 20;
     public List<ItemStack> items = new();
     public event Action<int> OnSlotChange;
     public event Action<ItemStack, int> OnNewSlot;
     public event Action OnInventoryChange;
 
-    public Inventory() => Instance = this;
-
-    public int AddItem(Item item, int count = 1)
+    public int AddItem(Item item, int count)
     {
-        if (item.stackable)
+        if (item.Stackable)
         {
-            int index = items.FindIndex(stack => stack.Item.id == item.id && !stack.IsFull());
+            int index = items.FindIndex(stack => stack.Item.Id == item.Id && !stack.IsFull());
             ItemStack existing = null;
             if (index != -1)
                 existing = items[index];
@@ -37,7 +33,7 @@ public class Inventory
         if (items.Count >= maxSlots)
             return 0;
 
-        int added = Math.Min(count, item.maxStack);
+        int added = Math.Min(count, item.MaxStack);
         ItemStack newItemStack = new ItemStack(item, added);
         items.Add(newItemStack);
 
@@ -46,9 +42,9 @@ public class Inventory
         return added;
     }
 
-    public bool RemoveItem(Item item, int count = 1)
+    public bool RemoveItem(Item item, int count)
     {
-        int index = items.FindIndex(stack => stack.Item.id == item.id);
+        int index = items.FindIndex(stack => stack.Item.Id == item.Id);
         ItemStack stack = null;
 
         if (index != -1)
@@ -58,7 +54,7 @@ public class Inventory
         if (stack.Count < count)
             return false;
 
-        if (stack.Item.stackable)
+        if (stack.Item.Stackable)
         {
             stack.Count -= count;
             if (stack.Count <= 0)
@@ -77,6 +73,6 @@ public class Inventory
 
     public int GetItemCount(Item item)
     {
-        return items.Where(s => s.Item.id == item.id).Sum(s => s.Count);
+        return items.Where(s => s.Item.Id == item.Id).Sum(s => s.Count);
     }
 }

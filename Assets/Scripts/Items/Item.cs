@@ -4,11 +4,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "Items/Item", order = -1000)]
 public class Item : ScriptableObject
 {
-    public int id => Name.GetHashCode();
+    public int Id => Name.GetHashCode();
     public string Name;
-    public Sprite icon;
-    public int maxStack = 99;
-    public bool stackable;
+    public ItemType Type = ItemType.Material;
+    public Sprite Icon;
+    public int MaxStack = 99;
+    public bool Stackable;
+
+    public virtual void Use(Creature creature) {}
+    public virtual void Select(Creature creature) {}
+    public virtual void WhileSelected(Creature creature) {}
+    public virtual void Deselect(Creature creature) {}
+}
+
+public enum ItemType
+{
+    Material,
+    Active
 }
 
 [Serializable]
@@ -23,12 +35,12 @@ public class ItemStack
         Count = count;
     }
 
-    public bool IsFull() => Count == Item.maxStack;
+    public bool IsFull() => Count == Item.MaxStack;
 
     public int Add(int value)
     {
         int previousCount = Count;
-        Count = Math.Min(Count + value, Item.maxStack);
+        Count = Math.Min(Count + value, Item.MaxStack);
 
         return Count - previousCount;
     }

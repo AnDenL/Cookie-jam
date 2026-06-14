@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Creatures;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
@@ -9,10 +10,17 @@ public class InventoryUI : MonoBehaviour
 
     private List<ItemSlot> itemSlots = new();
 
+    private Inventory inventory => PlayerController.Player.Inventory;
+
     private void Start()
     {
-        Inventory.Instance.OnSlotChange += UpdateUI;
-        Inventory.Instance.OnNewSlot += CreateSlot;
+        inventory.OnSlotChange += UpdateUI;
+        inventory.OnNewSlot += CreateSlot;
+
+        foreach (var item in inventory.items)
+        {
+            CreateSlot(item, 0);
+        }
     }
 
     private void Update()

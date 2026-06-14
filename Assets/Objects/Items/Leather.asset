@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Leather
   m_EditorClassIdentifier: 
   Name: Leather
-  icon: {fileID: 406676048, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
-  maxStack: 99
-  stackable: 1
+  Type: 0
+  Icon: {fileID: 406676048, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
+  MaxStack: 99
+  Stackable: 0

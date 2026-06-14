@@ -46,6 +46,28 @@ public class ParticleManager : MonoBehaviour
 
         ps.Emit(emitParams, amount);
     }
+
+    public static void PlayParticle(string name, Vector2 position, int amount, float rotation) 
+    {
+        if (ParticleIndices.TryGetValue(name, out int index))
+            PlayParticle(index, position, amount, rotation);
+    }
+
+    private static void PlayParticle(int index, Vector2 position, int amount, float rotation)
+    {
+        ParticleSystem ps = Instance.ParticleSystems[index];
+        if (ps == null) return;
+
+        var emitParams = new ParticleSystem.EmitParams
+        {
+            position = position,
+            rotation3D = new Vector3(0,0,rotation),
+            applyShapeToPosition = true
+        };
+
+        ps.Emit(emitParams, amount);
+        ps.transform.rotation = Quaternion.Euler(0,0,0);
+    }
 } 
 
 public class ParticlePool

@@ -8,9 +8,9 @@ public class ItemPickUp : Interactable
 
     public void Set(ItemStack stack)
     {
-        sr = GetComponent<SpriteRenderer>();
+        if (sr == null) sr = GetComponentInChildren<SpriteRenderer>();
         this.stack = stack;
-        sr.sprite = stack.Item.icon;
+        sr.sprite = stack.Item.Icon;
     }
 
     public override void Interact(Creature creature)

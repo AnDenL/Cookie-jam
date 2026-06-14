@@ -164,6 +164,8 @@ MonoBehaviour:
   Speed: 5
   baseMovementSkill: {fileID: 11400000, guid: ea4783d462a9f364a8747383039e6296, type: 2}
   CanAct: 1
+  snow: {fileID: 0}
+  grass: {fileID: 8300000, guid: d24da65c2860e304b9af6a0d6794c77a, type: 3}
   ui: {fileID: 0}
   Animator: {fileID: 0}
   Renderer: {fileID: 0}

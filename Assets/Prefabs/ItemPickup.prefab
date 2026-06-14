@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8127782712996799529}
   - component: {fileID: 4815228740763624388}
   - component: {fileID: 2372055690876078413}
+  - component: {fileID: 4952849895817033372}
   m_Layer: 7
   m_Name: ItemPickup
   m_TagString: Interactable
@@ -28,12 +29,12 @@ Transform:
   m_GameObject: {fileID: 217059824956293481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.318, y: 0.14, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6392685733270625591}
   - {fileID: 8435899958925630502}
+  - {fileID: 6392685733270625591}
   - {fileID: 3560103021698275399}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -104,34 +105,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da43d8821cc11f24187d48fb7abb0950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heightCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2.8301885
-      outSlope: 2.8301885
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.10287941
-    - serializedVersion: 3
-      time: 1.0125122
-      value: 0
-      inSlope: -3.3242564
-      outSlope: -3.3242564
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.03293345
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   maxHeight: 0.75
   duration: 0.6
-  shadow: {fileID: 8435899958925630502}
-  shadowOffset: {x: 0, y: -0.25, z: 0}
+  sr: {fileID: 0}
+--- !u!50 &4952849895817033372
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217059824956293481}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.5
+  m_LinearDrag: 10
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1232862666302028404
 GameObject:
   m_ObjectHideFlags: 0

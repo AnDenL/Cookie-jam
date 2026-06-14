@@ -44,6 +44,9 @@ public class Creature : MonoBehaviour
     public Creature Target => controller.Target;
     public Alignment Alignment => controller.Alignment;
 
+    public AudioClip grass;
+    public AudioClip snow;
+
     protected bool isActive = true;
 
     public virtual bool IsActive 
@@ -103,7 +106,7 @@ public class Creature : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
         Source = GetComponent<AudioSource>();
 
-        inventory = new();
+        //inventory = new();
 
         creatureLayerMask = LayerMask.GetMask("Creature");
         wallsLayerMask = LayerMask.GetMask("Walls");
@@ -141,7 +144,7 @@ public class Creature : MonoBehaviour
         _isBackwardsHash = Animator.StringToHash("IsBackwards");
         _isCorruptedHash = Animator.StringToHash("IsCorrupted");
         _hitHash = Animator.StringToHash("Hit");
-        _isDeadHash = Animator.StringToHash("Death");
+        _isDeadHash = Animator.StringToHash("Dead");
         _corruptHash = Animator.StringToHash("Corrupt");
         _lookUpHash = Animator.StringToHash("LookUp");
     }
@@ -318,6 +321,14 @@ public class Creature : MonoBehaviour
         if(!isActive) return;
         Source.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
         Source.PlayOneShot(clip);
+    }
+
+    public void Step()
+    {
+        if (snow)
+            PlaySound(Generation.CurrentBiome == Biome.Snow ? snow : grass);
+        else
+            PlaySound(grass);
     }
 
     public void DropItems()

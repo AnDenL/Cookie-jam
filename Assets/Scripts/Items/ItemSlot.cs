@@ -15,14 +15,14 @@ public class ItemSlot : MonoBehaviour
     public void SetItem(ItemStack newItem)
     {
         itemStack = newItem;
-        image.sprite = itemStack.Item.icon;
+        image.sprite = itemStack.Item.Icon;
         countText.text = itemStack.Count.ToString();
         UpdateUI();
     }
 
     public void UpdateUI()
     {
-        image.sprite = itemStack.Item.icon;
+        image.sprite = itemStack.Item.Icon;
         countText.text = itemStack.Count > 1 ? itemStack.Count.ToString() : string.Empty;
     }
 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Poison essence
   m_EditorClassIdentifier: 
   Name: Poison essence
-  icon: {fileID: 332946528, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
-  maxStack: 99
-  stackable: 1
+  Type: 0
+  Icon: {fileID: 332946528, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
+  MaxStack: 99
+  Stackable: 0

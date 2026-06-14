@@ -1,4 +1,4 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ObjectList", menuName = "Game/Utilities/ObjectList")]
+[CreateAssetMenu(fileName = "PrefabsList", menuName = "Game/Utilities/PrefabsList")]
 public class PrefabsList : ListSO<GameObject> { }

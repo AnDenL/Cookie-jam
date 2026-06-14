@@ -13,6 +13,7 @@ public class HealthBase : MonoBehaviour
 
     public Action<float> OnHit;
     public Action<float> OnHeal;
+    public Action<float,float> OnHealthChange;
     public event Action OnDeath;
 
     protected void Start()
@@ -25,6 +26,7 @@ public class HealthBase : MonoBehaviour
         health -= damage;
 
         OnHit?.Invoke(damage);
+        OnHealthChange?.Invoke(health,maxHealth);
 
         if (health <= 0)
         {
@@ -37,6 +39,7 @@ public class HealthBase : MonoBehaviour
         health += value;
 
         OnHeal?.Invoke(value);
+        OnHealthChange?.Invoke(health,maxHealth);
 
         if (health > maxHealth)
         {
@@ -47,6 +50,6 @@ public class HealthBase : MonoBehaviour
     private void Death()
     {
         OnDeath?.Invoke();
-        Destroy(gameObject);
+        isDead = true;
     }
 }
