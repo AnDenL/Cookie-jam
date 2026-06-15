@@ -98,6 +98,7 @@ MonoBehaviour:
   image: {fileID: 8726899272052475911}
   countText: {fileID: 2875467573764172448}
   animator: {fileID: 2559796981707352634}
+  sound: {fileID: 8300000, guid: d6c66f43ec6f9d74793c5c0e4e9bda06, type: 3}
 --- !u!95 &2559796981707352634
 Animator:
   serializedVersion: 5

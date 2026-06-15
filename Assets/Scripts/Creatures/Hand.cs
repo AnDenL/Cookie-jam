@@ -6,6 +6,7 @@ public class Hand : Item
     public float damage;
     public float cooldown;
     public float zoffset;
+    public AudioClip sound;
 
     private float lastAttack;
 
@@ -18,6 +19,8 @@ public class Hand : Item
         var angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
 
         ParticleManager.PlayParticle("Slash", pos, 1, angle - zoffset);
+        
+        creature.PlaySound(sound);
 
         var hits = Physics2D.OverlapCircleAll(pos, 1.5f, LayerMask.GetMask("Creatures", "Nature"));
 

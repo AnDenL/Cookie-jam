@@ -29,7 +29,20 @@ public class Hotbar : MonoBehaviour
     {
         if (!PlayerController.Player.CanAct) return;
 
-        if (Input.GetMouseButtonDown(0)) hotbarItems[selected].Use(PlayerController.Player);
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            hotbarItems[selected].Use(PlayerController.Player);
+            if (hotbarItems[selected].Consumable) 
+            {
+                if (inventory.GetItemCount(hotbarItems[selected]) == 1)
+                {
+                    inventory.RemoveItem(hotbarItems[selected], 1);
+                    selected--; 
+                    return;
+                }
+                else inventory.RemoveItem(hotbarItems[selected], 1);
+            }
+        }
 
         else if (Input.mouseScrollDelta.y != 0)
         {
@@ -41,8 +54,6 @@ public class Hotbar : MonoBehaviour
 
     private void ScrollHotbar(int direction)
     {
-        if (hotbarSlots.Count <= 1) return;
-
         int previousSelected = selected;
         selected += direction;
         if (selected < 0) selected = hotbarItems.Count - 1;
@@ -63,6 +74,7 @@ public class Hotbar : MonoBehaviour
         {
             Destroy(hotbarSlots[index].gameObject);
             hotbarItems.Remove(hotbarSlots[index].itemStack.Item);
+            hotbarItemSlots.Remove(hotbarSlots[index]);
             hotbarSlots.Remove(index);
             return;
         }

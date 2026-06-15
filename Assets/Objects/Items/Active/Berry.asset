@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eecc925d2466c2e4991391dc5b118d66, type: 3}
+  m_Script: {fileID: 11500000, guid: ff868363d1c145f478572a71cc39641d, type: 3}
   m_Name: Berry
   m_EditorClassIdentifier: 
-  Name: Berry
-  Type: 1
-  Icon: {fileID: 1560178246, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
+  Name: 
+  Type: 0
+  Icon: {fileID: 0}
   MaxStack: 99
-  Stackable: 1
+  Stackable: 0
+  Consumable: 0
+  Amount: 0
+  Sound: {fileID: 0}

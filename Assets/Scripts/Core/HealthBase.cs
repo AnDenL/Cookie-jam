@@ -40,13 +40,13 @@ public class HealthBase : MonoBehaviour
     {
         health += value;
 
-        OnHeal?.Invoke(value);
-        OnHealthChange?.Invoke(health,maxHealth);
-
         if (health > maxHealth)
         {
             health = maxHealth;
         }
+
+        OnHeal?.Invoke(value);
+        OnHealthChange?.Invoke(health,maxHealth);
     }
 
     private void Death()

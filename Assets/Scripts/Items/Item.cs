@@ -10,6 +10,7 @@ public class Item : ScriptableObject
     public Sprite Icon;
     public int MaxStack = 99;
     public bool Stackable;
+    public bool Consumable;
 
     public virtual void Use(Creature creature) {}
     public virtual void Select(Creature creature) {}

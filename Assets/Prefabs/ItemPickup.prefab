@@ -33,8 +33,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8435899958925630502}
   - {fileID: 6392685733270625591}
+  - {fileID: 8435899958925630502}
   - {fileID: 3560103021698275399}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHeight: 0.75
   duration: 0.6
-  sr: {fileID: 0}
+  sr: {fileID: 6392685733270625591}
 --- !u!50 &4952849895817033372
 Rigidbody2D:
   serializedVersion: 4
