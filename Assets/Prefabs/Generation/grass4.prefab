@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -4013804746884620396}
   - component: {fileID: -6816403289489735471}
   - component: {fileID: 8232289403845344035}
+  - component: {fileID: 8201393787023250701}
   m_Layer: 12
   m_Name: grass4
   m_TagString: Untagged
@@ -137,6 +138,7 @@ MonoBehaviour:
   health: 1
   maxHealth: 1
   isDead: 0
+  destroyDelay: 0
 --- !u!114 &8232289403845344035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,3 +157,17 @@ MonoBehaviour:
       Count: 1
     chance: 100
   itemPrefab: {fileID: 217059824956293481, guid: 91e24390e2196af44b223908b74b1bfa, type: 3}
+--- !u!114 &8201393787023250701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906786004880587179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28dedeaf399e7f94dbbed8e7af23aa22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Particles: Grass
+  Amount: 3

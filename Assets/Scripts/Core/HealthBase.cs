@@ -16,6 +16,8 @@ public class HealthBase : MonoBehaviour
     public Action<float,float> OnHealthChange;
     public event Action OnDeath;
 
+    public float destroyDelay = -1;
+
     protected void Start()
     {
         maxHealth = health;
@@ -49,6 +51,9 @@ public class HealthBase : MonoBehaviour
 
     private void Death()
     {
+        if (isDead) return;
+
+        if (destroyDelay >= 0) Destroy(gameObject, destroyDelay);
         OnDeath?.Invoke();
         isDead = true;
     }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class ParticleManager : MonoBehaviour
 {
     public static ParticleManager Instance { get; private set; }
+
     public static Dictionary<string, int> ParticleIndices = new();
 
     public ParticleSystem[] ParticleSystems = new ParticleSystem[0];
@@ -27,27 +28,7 @@ public class ParticleManager : MonoBehaviour
             .ToDictionary(x => x.ps.name, x => x.index);
     }
 
-    public static void PlayParticle(string name, Vector2 position, int amount) 
-    {
-        if (ParticleIndices.TryGetValue(name, out int index))
-            PlayParticle(index, position, amount);
-    }
-
-    private static void PlayParticle(int index, Vector2 position, int amount)
-    {
-        ParticleSystem ps = Instance.ParticleSystems[index];
-        if (ps == null) return;
-
-        var emitParams = new ParticleSystem.EmitParams
-        {
-            position = position,
-            applyShapeToPosition = true
-        };
-
-        ps.Emit(emitParams, amount);
-    }
-
-    public static void PlayParticle(string name, Vector2 position, int amount, float rotation) 
+    public static void PlayParticle(string name, Vector2 position, int amount, float rotation = 0)
     {
         if (ParticleIndices.TryGetValue(name, out int index))
             PlayParticle(index, position, amount, rotation);
@@ -57,16 +38,15 @@ public class ParticleManager : MonoBehaviour
     {
         ParticleSystem ps = Instance.ParticleSystems[index];
         if (ps == null) return;
-
+        
         var emitParams = new ParticleSystem.EmitParams
         {
             position = position,
-            rotation3D = new Vector3(0,0,rotation),
+            rotation = rotation,
             applyShapeToPosition = true
         };
 
         ps.Emit(emitParams, amount);
-        ps.transform.rotation = Quaternion.Euler(0,0,0);
     }
 } 
 

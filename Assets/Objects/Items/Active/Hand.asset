@@ -19,3 +19,4 @@ MonoBehaviour:
   Stackable: 0
   damage: 1
   cooldown: 0.1
+  zoffset: 90

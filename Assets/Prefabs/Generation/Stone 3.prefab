@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 8954044440314031586}
   - component: {fileID: 8948037297450572260}
   - component: {fileID: -4835194786394168060}
+  - component: {fileID: 6578985057680609412}
+  - component: {fileID: -7010492082976190614}
+  - component: {fileID: 7619105070711222821}
   m_Layer: 12
   m_Name: Stone 3
   m_TagString: Untagged
@@ -120,3 +123,52 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.125}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &6578985057680609412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784790809826245806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1714d37627b7eb14c81cdc2766330747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  maxHealth: 2
+  isDead: 0
+  destroyDelay: 0
+--- !u!114 &-7010492082976190614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784790809826245806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0708e8fb75c97854dacfa31bd99bc77d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drop:
+  - itemStack:
+      Item: {fileID: 11400000, guid: ac1b18083f2af044c82b01d9aae22e6c, type: 2}
+      Count: 1
+    chance: 100
+  itemPrefab: {fileID: 217059824956293481, guid: 91e24390e2196af44b223908b74b1bfa, type: 3}
+--- !u!114 &7619105070711222821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784790809826245806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28dedeaf399e7f94dbbed8e7af23aa22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Particles: 
+  Amount: 0
+  offset: {x: 0, y: 0}

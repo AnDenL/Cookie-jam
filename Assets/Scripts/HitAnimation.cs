@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class HitAnimation : MonoBehaviour
 {
+    private static readonly int DeathHash = Animator.StringToHash("Death");
+    private static readonly int HitHash = Animator.StringToHash("Hit");
     [SerializeField] private string Particles;
     [SerializeField] private int Amount;
+    [SerializeField] private Vector2 offset;
+
     private Animator animator;
 
     private void Start()
@@ -23,12 +27,13 @@ public class HitAnimation : MonoBehaviour
 
     private void OnHit(float value)
     {
-        ParticleManager.PlayParticle(Particles, transform.position, Amount);
-        animator.SetTrigger("Hit");
+        if (!string.IsNullOrWhiteSpace(Particles))
+            ParticleManager.PlayParticle(Particles, transform.position + (Vector3)offset, Amount);
+        if (animator) animator.SetTrigger(HitHash);
     }
 
     private void OnDeath()
     {
-        animator.SetTrigger("Death");
+        if (animator) animator.SetTrigger(DeathHash);
     }
 }

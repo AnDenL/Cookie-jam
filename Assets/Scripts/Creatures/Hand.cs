@@ -5,6 +5,7 @@ public class Hand : Item
 {
     public float damage;
     public float cooldown;
+    public float zoffset;
 
     private float lastAttack;
 
@@ -14,10 +15,11 @@ public class Hand : Item
 
         Vector2 dir = Game.mainCamera.ScreenToWorldPoint(Input.mousePosition) - creature.transform.position;
         var pos = (Vector2)creature.transform.position + dir.normalized;
+        var angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
 
-        ParticleManager.PlayParticle("Slash", pos, 1);
+        ParticleManager.PlayParticle("Slash", pos, 1, angle - zoffset);
 
-        var hits = Physics2D.OverlapCircleAll(pos, 1, LayerMask.GetMask("Creatures", "Nature"));
+        var hits = Physics2D.OverlapCircleAll(pos, 1.5f, LayerMask.GetMask("Creatures", "Nature"));
 
         foreach (var hit in hits)
         {

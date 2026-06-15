@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -3922463211817599172}
   - component: {fileID: 2809462359987670483}
   - component: {fileID: -1329966876097325053}
+  - component: {fileID: 4043911044106021173}
   m_Layer: 12
   m_Name: snow3
   m_TagString: Untagged
@@ -137,6 +138,7 @@ MonoBehaviour:
   health: 1
   maxHealth: 1
   isDead: 0
+  destroyDelay: 0
 --- !u!114 &-1329966876097325053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,3 +157,17 @@ MonoBehaviour:
       Count: 1
     chance: 100
   itemPrefab: {fileID: 217059824956293481, guid: 91e24390e2196af44b223908b74b1bfa, type: 3}
+--- !u!114 &4043911044106021173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856704836946406314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28dedeaf399e7f94dbbed8e7af23aa22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Particles: Snow
+  Amount: 3

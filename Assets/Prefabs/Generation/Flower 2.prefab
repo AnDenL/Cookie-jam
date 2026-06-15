@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 6522678286573375521}
   - component: {fileID: 6554606254649389108}
   - component: {fileID: -857797168356654329}
+  - component: {fileID: 3542628269150376741}
+  - component: {fileID: -6240798515726388293}
+  - component: {fileID: 435252830053895450}
   m_Layer: 12
   m_Name: Flower 2
   m_TagString: Untagged
@@ -120,3 +123,52 @@ CircleCollider2D:
   m_Offset: {x: -0.0625, y: 0.375}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3542628269150376741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445697219870681139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1714d37627b7eb14c81cdc2766330747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  maxHealth: 1
+  isDead: 0
+  destroyDelay: 0
+--- !u!114 &-6240798515726388293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445697219870681139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0708e8fb75c97854dacfa31bd99bc77d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drop:
+  - itemStack:
+      Item: {fileID: 11400000, guid: 097dc75320e15f047a5461028b9707d5, type: 2}
+      Count: 1
+    chance: 100
+  itemPrefab: {fileID: 217059824956293481, guid: 91e24390e2196af44b223908b74b1bfa, type: 3}
+--- !u!114 &435252830053895450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445697219870681139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28dedeaf399e7f94dbbed8e7af23aa22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Particles: Grass
+  Amount: 1
+  offset: {x: 0, y: 0}

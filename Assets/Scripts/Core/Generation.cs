@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Creatures;
 using Unity.VisualScripting;
@@ -8,10 +9,12 @@ public class Generation : MonoBehaviour
     public static Generation instance;
     public static Biome CurrentBiome;
 
-    [SerializeField] private int[] fieldPrefabs;
-    [SerializeField] private int[] forestPrefabs;
-    [SerializeField] private int[] snowPrefabs;
-    [SerializeField] private int[] hellPrefabs;
+    [SerializeField] private GenStruct[] genOPrefabs;
+
+    private int[] fieldPrefabs;
+    private int[] forestPrefabs;
+    private int[] snowPrefabs;
+    private int[] hellPrefabs;
 
     [SerializeField] private Camera minimapCamera;
 
@@ -46,13 +49,23 @@ public class Generation : MonoBehaviour
         terrain.SetVector("_5", offsets[4]);
         terrain.SetVector("_6", offsets[5]);
 
-        for (int i = -128; i < 128; i++)
+        List<int> field = new();
+        List<int> forest = new();
+        List<int> snow = new();
+        List<int> hell = new();
+
+        for (int i = 0; i < genOPrefabs.Length; i++)
         {
-            for (int j = -128; j < 128; j++)
-            {
-                CheckBiome(new Vector2Int(i,j));
-            }
+            if (genOPrefabs[i].Biomes.HasFlag(Biome.Field)) field.Add(i);
+            if (genOPrefabs[i].Biomes.HasFlag(Biome.Forest)) forest.Add(i);
+            if (genOPrefabs[i].Biomes.HasFlag(Biome.Snow)) snow.Add(i);
+            if (genOPrefabs[i].Biomes.HasFlag(Biome.Hell)) hell.Add(i);
         }
+
+        fieldPrefabs = field.ToArray();
+        forestPrefabs = forest.ToArray();
+        snowPrefabs = snow.ToArray();
+        hellPrefabs = hell.ToArray();
 
         ValidateAround(Vector2Int.zero);
         minimapCamera.Render();
@@ -92,6 +105,9 @@ public class Generation : MonoBehaviour
 
             CurrentBiome = CheckBiome(position);
 
+            if (CurrentBiome == Biome.Snow) 
+                ParticleManager.PlayParticle("Breath", PlayerController.Player.transform.position, 1);
+
             if (chunks.Count > 60)
             {
                 CleanUp(position);
@@ -115,9 +131,9 @@ public class Generation : MonoBehaviour
 
         foreach (var obj in chunkToPlace.objects)
         {
-            var o = Instantiate(Game.GlobalObjects[obj.id], position * 16 + obj.position, Quaternion.identity);
+            var o = Instantiate(genOPrefabs[obj.id].prefab, position * 16 + obj.position, Quaternion.identity);
             o.transform.parent = chunkobj.transform;
-            o.transform.position += Game.GlobalObjects[obj.id].transform.position;
+            o.transform.position += genOPrefabs[obj.id].prefab.transform.position;
             o.transform.localScale = obj.flip ? new Vector3(1,1,1) : new Vector3(-1,1,1);
         }
         chunkToPlace.chunk = chunkobj;
@@ -126,30 +142,28 @@ public class Generation : MonoBehaviour
 
     public static Biome CheckBiome(Vector2Int position)
     {
-        float s1 = GetPixel(position * 16 + offsets[0], 0.3f);
-        float s2 = GetPixel(position * 16 + offsets[1]);
-        float s = s1 * s2;
-        float f = GetPixel(position * 16 + offsets[2], 0.3f) * GetPixel(position * 16 + offsets[3]);
-        float h = Mathf.Clamp(GetPixel(position * 16 + offsets[4], 0.3f) + GetPixel(position * 16 + offsets[5]) - (s1 + s2), 0, 1);
+        float w = GetPixel(position * 16 + offsets[0], 0.3f) * GetPixel(position * 16 + offsets[1]);;
+        float t = GetPixel(position * 16 + offsets[2], 0.3f) * GetPixel(position * 16 + offsets[3]);
+        float h = GetPixel(position * 16 + offsets[4], 0.3f) * GetPixel(position * 16 + offsets[5]);
         
-        GameObject sq = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        sq.transform.position = (Vector2)position * 16;
-        sq.transform.localScale = Vector3.one * 4;
+        // GameObject sq = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        // sq.transform.position = (Vector2)position * 16;
+        // sq.transform.localScale = Vector3.one * 4;
 
-        if (h > 0.4f) { 
-            sq.GetComponent<MeshRenderer>().material.color = Color.red;
+        if (w < 0.09f) { 
+            //sq.GetComponent<MeshRenderer>().material.color = Color.red;
             return Biome.Hell;
         }
-        if (s > 0.45f) 
+        if (w > 0.45f) 
         {
-            sq.GetComponent<MeshRenderer>().material.color = Color.blue;
+            //sq.GetComponent<MeshRenderer>().material.color = Color.blue;
             return Biome.Snow;
         }
-        if (f > 0.45f) {
-            sq.GetComponent<MeshRenderer>().material.color = Color.black;
+        if (t > 0.45f) {
+            //sq.GetComponent<MeshRenderer>().material.color = Color.black;
             return Biome.Forest;
         }
-        sq.GetComponent<MeshRenderer>().material.color = Color.green;
+        //sq.GetComponent<MeshRenderer>().material.color = Color.green;
 
         return Biome.Field;
     }
@@ -182,9 +196,9 @@ public class Generation : MonoBehaviour
 
         foreach (var obj in chunkToPlace.objects)
         {
-            var o = Instantiate(Game.GlobalObjects[obj.id], position * 16 + obj.position, Quaternion.identity);
+            var o = Instantiate(genOPrefabs[obj.id].prefab, position * 16 + obj.position, Quaternion.identity);
             o.transform.parent = chunkobj.transform;
-            o.transform.position += Game.GlobalObjects[obj.id].transform.position;
+            o.transform.position += genOPrefabs[obj.id].prefab.transform.position;
             o.transform.localScale = obj.flip ? new Vector3(1,1,1) : new Vector3(-1,1,1);
         }
         chunkToPlace.chunk = chunkobj;
@@ -213,12 +227,22 @@ public class Generation : MonoBehaviour
     }
 }
 
+[Serializable]
+public struct GenStruct
+{
+    public GameObject prefab;
+
+    public Biome Biomes;
+}
+
+[Flags]
 public enum Biome
 {
-    Field,
-    Forest,
-    Snow,
-    Hell
+    None = 0,
+    Field = 1 << 0,
+    Forest = 1 << 1,
+    Snow = 1 << 2,
+    Hell = 1 << 3
 }
 
 public class Chunk
