@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff868363d1c145f478572a71cc39641d, type: 3}
   m_Name: Berry
   m_EditorClassIdentifier: 
-  Name: 
-  Type: 0
-  Icon: {fileID: 0}
+  Name: Berry
+  Type: 1
+  Icon: {fileID: 1560178246, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
   MaxStack: 99
-  Stackable: 0
-  Consumable: 0
-  Amount: 0
-  Sound: {fileID: 0}
+  Stackable: 1
+  Consumable: 1
+  Amount: 5
+  Sound: {fileID: 8300000, guid: eec1e4193ef76314d8697910124cc786, type: 3}

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f70530370967c943b5dfeea8d92bd60, type: 3}
   m_Name: JumpAttack
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Jump
   Priority: 0
-  cooldownTime: 0
+  cooldownTime: 0.5
   Speed: 3
   JumpTime: 0.5
-  jumpSound: {fileID: 0}
+  jumpSound: {fileID: 8300000, guid: 3de50b45df9192c4d92a4d0c8d07273a, type: 3}
   groundSound: {fileID: 0}

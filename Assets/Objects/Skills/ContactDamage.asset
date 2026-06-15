@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15761f1c3bdd0240b84b1a77a57863d, type: 3}
   m_Name: ContactDamage
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 15
   cooldown: 1

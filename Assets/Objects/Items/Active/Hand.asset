@@ -17,6 +17,8 @@ MonoBehaviour:
   Icon: {fileID: -637355551, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
   MaxStack: 99
   Stackable: 0
+  Consumable: 0
   damage: 1
   cooldown: 0.1
   zoffset: 90
+  sound: {fileID: 8300000, guid: 1d4d9e25a8f4b2c489054ad3fdd83fd2, type: 3}
