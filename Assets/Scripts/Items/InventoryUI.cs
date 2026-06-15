@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Creatures;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class InventoryUI : MonoBehaviour
     {
         inventory.OnSlotChange += UpdateUI;
         inventory.OnNewSlot += CreateSlot;
+
+        recipesgrid.gameObject.SetActive(false);
+        recipesgrid.gameObject.SetActive(true);
 
         foreach (var item in inventory.items)
         {
@@ -62,7 +66,7 @@ public class InventoryUI : MonoBehaviour
         if (inventoryPanel.activeInHierarchy)
         {
             foreach (var slot in recipeSlots)
-                slot.UpdateUI();
+                slot.UpdateSlot();
         }
         else
         {
@@ -70,6 +74,6 @@ public class InventoryUI : MonoBehaviour
                 slot.NeedsRebuild = true;
         }
 
-        itemSlots[index].UpdateUI();
+        itemSlots[index].UpdateSlot();
     }
 }

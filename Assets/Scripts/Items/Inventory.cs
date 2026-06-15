@@ -9,7 +9,7 @@ public class Inventory
     public List<ItemStack> items = new();
     public event Action<int> OnSlotChange;
     public event Action<ItemStack, int> OnNewSlot;
-    public event Action OnInventoryChange;
+    public event Action<Item> OnItemChanged;
 
     public int AddItem(Item item, int count)
     {
@@ -25,7 +25,7 @@ public class Inventory
                 int change = existing.Add(count);
 
                 OnSlotChange?.Invoke(index);
-                OnInventoryChange?.Invoke();
+                OnItemChanged?.Invoke(item);
                 return change;
             }
         }
@@ -38,7 +38,7 @@ public class Inventory
         items.Add(newItemStack);
 
         OnNewSlot?.Invoke(newItemStack, items.Count - 1);
-        OnInventoryChange?.Invoke();
+        OnItemChanged?.Invoke(item);
         return added;
     }
 
@@ -65,9 +65,11 @@ public class Inventory
         }
         else
         {
+            stack.Count = 0;
+            OnSlotChange?.Invoke(index);
             items.Remove(stack);
         }
-        OnInventoryChange?.Invoke();
+        OnItemChanged?.Invoke(item);
         return true;
     }
 

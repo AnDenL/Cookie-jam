@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Creatures;
+using UnityEngine.EventSystems;
+using System.Linq;
 
 public class Hotbar : MonoBehaviour
 {
@@ -10,8 +12,7 @@ public class Hotbar : MonoBehaviour
     [SerializeField] private Item hand;
 
     private List<Item> hotbarItems = new();
-    private List<ItemSlot> hotbarItemSlots = new();
-    private Dictionary<int, ItemSlot> hotbarSlots = new();
+    private List<ItemSlot> hotbarSlots = new();
     private int selected = 0; 
 
     private Inventory inventory => PlayerController.Player.Inventory;
@@ -20,8 +21,10 @@ public class Hotbar : MonoBehaviour
     {
         instance = this;
         hotbarSlots = new();
+
         CreateSlot(new ItemStack(hand, 1), -1);
-        inventory.OnSlotChange += UpdateUI;
+
+        inventory.OnItemChanged += UpdateUI;
         inventory.OnNewSlot += CreateSlot;
     }
 
@@ -29,10 +32,11 @@ public class Hotbar : MonoBehaviour
     {
         if (!PlayerController.Player.CanAct) return;
 
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0) && !HoverUI()) 
         {
             if (hotbarItems[selected].Use(PlayerController.Player) && hotbarItems[selected].Consumable) 
             {
+                //print(inventory.GetItemCount(hotbarItems[selected]));
                 if (inventory.GetItemCount(hotbarItems[selected]) == 1)
                 {
                     inventory.RemoveItem(hotbarItems[selected], 1);
@@ -51,6 +55,29 @@ public class Hotbar : MonoBehaviour
         hotbarItems[selected].WhileSelected(PlayerController.Player);
     }
 
+    private bool HoverUI()
+    {
+        Vector2 position = Input.mousePosition;
+        PointerEventData pointer = new(EventSystem.current);
+        pointer.position = position;
+        List<RaycastResult> raycastResults = new();
+
+        EventSystem.current.RaycastAll(pointer, raycastResults);
+
+        if (raycastResults.Count > 0)
+        {
+            foreach (RaycastResult result in raycastResults)
+            {
+                if (result.distance == 0 && result.isValid)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     private void ScrollHotbar(int direction)
     {
         int previousSelected = selected;
@@ -59,38 +86,46 @@ public class Hotbar : MonoBehaviour
         else if (selected > hotbarItems.Count - 1) selected = 0;
         if (previousSelected != selected)
         {
-            hotbarItemSlots[selected].SelectAnimation();
+            hotbarSlots[selected].SelectAnimation();
             Hints.Instance.ShowHint(hotbarItems[selected].Name, 1, AnimationCurve.Linear(0,1,1,0));
             hotbarItems[previousSelected].Deselect(PlayerController.Player);
             hotbarItems[selected].Select(PlayerController.Player);
         }
     }
 
-    private void UpdateUI(int index)
+    private void UpdateUI(Item item)
     {
-        if (!hotbarSlots.ContainsKey(index)) return;
-        if (hotbarSlots[index].itemStack.Count == 0)
+        var id = hotbarItems.FindIndex(s => s.Id == item.Id);
+
+        if (id == -1)
+            return;
+        
+        if (hotbarSlots[id].ItemCount == 0)
         {
-            Destroy(hotbarSlots[index].gameObject);
-            hotbarItems.Remove(hotbarSlots[index].itemStack.Item);
-            hotbarItemSlots.Remove(hotbarSlots[index]);
-            hotbarSlots.Remove(index);
+            Destroy(hotbarSlots[id].gameObject);
+            hotbarSlots.RemoveAt(id);
+            hotbarItems.RemoveAt(id);
             return;
         }
-        hotbarSlots[index].UpdateUI();
+
+        hotbarSlots[id].HorbarUpdate();
     }
 
     private void CreateSlot(ItemStack stack, int index)
     {
         if (stack.Item.Type == ItemType.Active)
         {
-            var slot = Instantiate(itemSlotPrefab, transform.GetChild(0)).GetComponent<ItemSlot>();
-            hotbarSlots.Add(index, slot);
-            hotbarItems.Add(stack.Item);
-            hotbarItemSlots.Add(slot);
-            hotbarSlots[index].SetItem(stack);
+            var id = hotbarItems.FindIndex(s => s.Id == stack.Item.Id);
 
-            if(hotbarItems.Count == 1) hotbarItems[0].Select(PlayerController.Player);
+            if (id != -1)
+                return;
+
+            var slot = Instantiate(itemSlotPrefab, transform.GetChild(0)).GetComponent<ItemSlot>();
+            hotbarSlots.Add(slot);
+            hotbarItems.Add(stack.Item);
+            hotbarSlots[^1].SetItem(stack);
+
+            if (hotbarItems.Count == 1) hotbarItems[0].Select(PlayerController.Player);
         }
     }
 }

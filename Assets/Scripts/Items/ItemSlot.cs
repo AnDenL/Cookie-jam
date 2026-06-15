@@ -8,6 +8,7 @@ public class ItemSlot : MonoBehaviour
 {
     private static readonly int OnSelectHash = Animator.StringToHash("OnSelect");
     public ItemStack itemStack;
+    public int ItemCount => PlayerController.Player.Inventory.GetItemCount(itemStack.Item);
 
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI countText;
@@ -21,13 +22,18 @@ public class ItemSlot : MonoBehaviour
         itemStack = newItem;
         image.sprite = itemStack.Item.Icon;
         countText.text = itemStack.Count.ToString();
-        UpdateUI();
+        UpdateSlot();
     }
 
-    public void UpdateUI()
+    public void UpdateSlot()
     {
         image.sprite = itemStack.Item.Icon;
         countText.text = itemStack.Count > 1 ? itemStack.Count.ToString() : string.Empty;
+    }
+
+    public void HorbarUpdate()
+    {
+        countText.text = ItemCount > 1 ? itemStack.Count.ToString() : string.Empty;
     }
 
     public void SelectAnimation()

@@ -38,7 +38,7 @@ public class RecipeSlot : MonoBehaviour
 
         button.interactable = available;
 
-        UpdateUI();
+        UpdateSlot();
     }
 
     public void Craft()
@@ -52,13 +52,11 @@ public class RecipeSlot : MonoBehaviour
 
     private void OnEnable()
     {
-        if (NeedsRebuild) UpdateUI();
+        if (NeedsRebuild) UpdateSlot();
     }
 
-    public void UpdateUI()
+    public void UpdateSlot()
     {
-        if (!gameObject.activeInHierarchy) return;
-
         bool available = true;
 
         foreach (var slot in slots)

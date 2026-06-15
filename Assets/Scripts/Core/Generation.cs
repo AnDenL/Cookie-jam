@@ -150,7 +150,7 @@ public class Generation : MonoBehaviour
         // sq.transform.position = (Vector2)position * 16;
         // sq.transform.localScale = Vector3.one * 4;
 
-        if (w < 0.09f) { 
+        if (w < 0.09f && Vector2.Distance(Vector2.zero, position * 16) > 60) { 
             //sq.GetComponent<MeshRenderer>().material.color = Color.red;
             return Biome.Hell;
         }

@@ -24,7 +24,7 @@ public class BuildingUI : MonoBehaviour
         for (int i = 0; i < requirementsImages.Length; i++)
             requirementsCounts[i] = requirementsImages[i].gameObject.GetComponentInChildren<TextMeshProUGUI>();
 
-        PlayerController.Player.Inventory.OnInventoryChange += () => UpdateRequirments(lastPart);
+        //PlayerController.Player.Inventory.OnInventoryChange += () => UpdateRequirments(lastPart);
     }
 
     private void Update()
