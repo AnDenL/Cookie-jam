@@ -3220,7 +3220,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "CellDensity",
     "m_StageCapability": 3,
-    "m_Value": 6.0,
+    "m_Value": 8.0,
     "m_DefaultValue": 5.0,
     "m_Labels": []
 }
@@ -9249,7 +9249,7 @@
     "m_StageCapability": 3,
     "m_Value": {
         "x": 1.0,
-        "y": 0.5625
+        "y": 0.5
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -10151,7 +10151,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AlphaClipThreshold",
     "m_StageCapability": 2,
-    "m_Value": 0.5,
+    "m_Value": 0.09000000357627869,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
@@ -10472,9 +10472,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 1.0,
-        "g": 0.2688679099082947,
-        "b": 0.2688679099082947,
+        "r": 0.20185118913650514,
+        "g": 0.6792452931404114,
+        "b": 0.20591102540493012,
         "a": 1.0
     },
     "isMainColor": false,
@@ -10581,9 +10581,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.6792452931404114,
-        "g": 0.32360270619392397,
-        "b": 0.32360270619392397,
+        "r": 0.7228996157646179,
+        "g": 0.8962264060974121,
+        "b": 0.7248254418373108,
         "a": 0.0
     },
     "isMainColor": false,
@@ -10854,9 +10854,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 1.0,
-        "g": 0.014150917530059815,
-        "b": 0.014150917530059815,
+        "r": 0.018987417221069337,
+        "g": 1.0,
+        "b": 0.0,
         "a": 1.0
     },
     "isMainColor": false,
@@ -12174,7 +12174,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "CellDensity",
     "m_StageCapability": 3,
-    "m_Value": 4.0,
+    "m_Value": 6.0,
     "m_DefaultValue": 5.0,
     "m_Labels": []
 }

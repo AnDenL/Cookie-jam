@@ -164,6 +164,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UIHealth_2
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 11
+        width: 50
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b174d13c0337ee54792c747128725fd6
+      internalID: -367762394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -177,6 +198,7 @@ TextureImporter:
     nameFileIdTable:
       UIHealth_0: 1356419104
       UIHealth_1: 376209852
+      UIHealth_2: -367762394
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
