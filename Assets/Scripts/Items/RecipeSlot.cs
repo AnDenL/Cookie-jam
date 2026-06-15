@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Creatures;
 using UnityEngine;
 using UnityEngine.Diagnostics;
+using UnityEngine.UI;
 
 public class RecipeSlot : MonoBehaviour
 {
@@ -9,15 +10,11 @@ public class RecipeSlot : MonoBehaviour
 
     [SerializeField] private GameObject itemSlotPrefab;
     [SerializeField] private ItemSlot resultSlot;
+    [SerializeField] private Button button;
 
     private List<ItemSlot> slots = new();
 
-    private bool rebuilded = false;
-
-    private void Start()
-    {
-        PlayerController.Player.Inventory.OnItemRemove += UpdateUI;
-    }
+    public bool NeedsRebuild = false;
 
     public void SetRecipe(Recipe newRecipe)
     {
@@ -30,40 +27,50 @@ public class RecipeSlot : MonoBehaviour
             slots.Add(Instantiate(itemSlotPrefab, transform.GetChild(0)).GetComponent<ItemSlot>());
             slots[^1].SetItem(stack);
 
-            bool hasItem = PlayerController.Player.Inventory.GetItemCount(stack.Item) < stack.Count;
+            bool hasItem = PlayerController.Player.Inventory.GetItemCount(stack.Item) >= stack.Count;
             available = available && hasItem;
 
-            slots[^1].Disabled(hasItem);
+            slots[^1].Disabled(!hasItem);
         }
 
         resultSlot.SetItem(recipe.ResultObjects);
-        resultSlot.Disabled(available);
+        resultSlot.Disabled(!available);
+
+        button.interactable = available;
 
         UpdateUI();
     }
 
+    public void Craft()
+    {
+        foreach (ItemStack stack in recipe.RequiredObjects) 
+        {
+            if (!PlayerController.Player.Inventory.RemoveItem(stack.Item, stack.Count)) return;
+        }
+        PlayerController.Player.Inventory.AddItem(recipe.ResultObjects.Item, recipe.ResultObjects.Count);
+    }
+
     private void OnEnable()
     {
-        if (!rebuilded) UpdateUI();
+        if (NeedsRebuild) UpdateUI();
     }
 
     public void UpdateUI()
     {
-        rebuilded = false;
-
         if (!gameObject.activeInHierarchy) return;
 
         bool available = true;
 
         foreach (var slot in slots)
         {
-            bool hasItem = PlayerController.Player.Inventory.GetItemCount(slot.itemStack.Item) < slot.itemStack.Count;
+            bool hasItem = PlayerController.Player.Inventory.GetItemCount(slot.itemStack.Item) >= slot.itemStack.Count;
             available = available && hasItem;
 
-            slot.Disabled(hasItem);
+            slot.Disabled(!hasItem);
         }
 
-        resultSlot.Disabled(available);
-        rebuilded = true;
+        resultSlot.Disabled(!available);
+        button.interactable = available;
+        NeedsRebuild = false;
     }
 }

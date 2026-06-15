@@ -15,6 +15,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Transform recipesgrid;
 
     private List<ItemSlot> itemSlots = new();
+    private List<RecipeSlot> recipeSlots = new();
 
     private Inventory inventory => PlayerController.Player.Inventory;
 
@@ -30,7 +31,8 @@ public class InventoryUI : MonoBehaviour
 
         foreach (var recipe in recipes)
         {
-            Instantiate(recipeSlotPrefab, recipesgrid).GetComponent<RecipeSlot>().SetRecipe(recipe);
+            recipeSlots.Add(Instantiate(recipeSlotPrefab, recipesgrid).GetComponent<RecipeSlot>());
+            recipeSlots[^1].SetRecipe(recipe);
         }
     }
 
@@ -56,6 +58,18 @@ public class InventoryUI : MonoBehaviour
             itemSlots.RemoveAt(index);
             return;
         }
+
+        if (inventoryPanel.activeInHierarchy)
+        {
+            foreach (var slot in recipeSlots)
+                slot.UpdateUI();
+        }
+        else
+        {
+            foreach (var slot in recipeSlots)
+                slot.NeedsRebuild = true;
+        }
+
         itemSlots[index].UpdateUI();
     }
 }
