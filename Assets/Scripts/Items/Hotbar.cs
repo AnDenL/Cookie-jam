@@ -31,8 +31,7 @@ public class Hotbar : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) 
         {
-            hotbarItems[selected].Use(PlayerController.Player);
-            if (hotbarItems[selected].Consumable) 
+            if (hotbarItems[selected].Use(PlayerController.Player) && hotbarItems[selected].Consumable) 
             {
                 if (inventory.GetItemCount(hotbarItems[selected]) == 1)
                 {

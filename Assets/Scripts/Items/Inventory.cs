@@ -10,6 +10,7 @@ public class Inventory
     public event Action<int> OnSlotChange;
     public event Action<ItemStack, int> OnNewSlot;
     public event Action OnInventoryChange;
+    public event Action OnItemRemove;
 
     public int AddItem(Item item, int count)
     {
@@ -68,6 +69,7 @@ public class Inventory
             items.Remove(stack);
         }
         OnInventoryChange?.Invoke();
+        OnItemRemove?.Invoke();
         return true;
     }
 

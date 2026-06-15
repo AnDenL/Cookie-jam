@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.Diagnostics;
 using Creatures;
 
 [RequireComponent(typeof(Animator))]
@@ -36,6 +35,12 @@ public class ItemSlot : MonoBehaviour
         if (!animator) animator = GetComponent<Animator>();
         animator.SetTrigger(OnSelectHash);
         PlayerController.Player.PlaySound(sound);
+    }
+
+    public void Disabled(bool value)
+    {
+        if (!animator) animator = GetComponent<Animator>();
+        animator.SetBool("Disabled", value);
     }
     
     public void Clear()

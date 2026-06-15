@@ -12,7 +12,7 @@ public class Item : ScriptableObject
     public bool Stackable;
     public bool Consumable;
 
-    public virtual void Use(Creature creature) {}
+    public virtual bool Use(Creature creature) { return false; }
     public virtual void Select(Creature creature) {}
     public virtual void WhileSelected(Creature creature) {}
     public virtual void Deselect(Creature creature) {}

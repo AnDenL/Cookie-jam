@@ -10,9 +10,9 @@ public class Hand : Item
 
     private float lastAttack;
 
-    public override void Use(Creature creature)
+    public override bool Use(Creature creature)
     {
-        if (Time.time < lastAttack + cooldown) return;
+        if (Time.time < lastAttack + cooldown) return false;
 
         Vector2 dir = Game.mainCamera.ScreenToWorldPoint(Input.mousePosition) - creature.transform.position;
         var pos = (Vector2)creature.transform.position + dir.normalized;
@@ -22,7 +22,7 @@ public class Hand : Item
         
         creature.PlaySound(sound);
 
-        var hits = Physics2D.OverlapCircleAll(pos, 1.5f, LayerMask.GetMask("Creatures", "Nature"));
+        var hits = Physics2D.OverlapCircleAll(pos, 1.5f, LayerMask.GetMask("Nature"));
 
         foreach (var hit in hits)
         {
@@ -32,6 +32,7 @@ public class Hand : Item
             }
         }
         lastAttack = Time.time;
+        return true;
     }
 
     public override void Select(Creature creature)

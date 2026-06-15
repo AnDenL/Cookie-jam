@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
+    [Header("Items")]
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject itemSlotPrefab;
     [SerializeField] private Transform grid;
+
+    [Header("Craft")]
+    [SerializeField] private List<Recipe> recipes;
+    [SerializeField] private GameObject recipeSlotPrefab;
+    [SerializeField] private Transform recipesgrid;
 
     private List<ItemSlot> itemSlots = new();
 
@@ -21,6 +27,11 @@ public class InventoryUI : MonoBehaviour
         {
             CreateSlot(item, 0);
         }
+
+        foreach (var recipe in recipes)
+        {
+            Instantiate(recipeSlotPrefab, recipesgrid).GetComponent<RecipeSlot>().SetRecipe(recipe);
+        }
     }
 
     private void Update()
@@ -33,7 +44,7 @@ public class InventoryUI : MonoBehaviour
 
     private void CreateSlot(ItemStack stack, int index)
     {
-        itemSlots.Add(Instantiate(itemSlotPrefab, grid.transform).GetComponent<ItemSlot>());
+        itemSlots.Add(Instantiate(itemSlotPrefab, grid).GetComponent<ItemSlot>());
         itemSlots[^1].SetItem(stack);
     }
 

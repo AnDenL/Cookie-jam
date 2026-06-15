@@ -17,7 +17,7 @@ TagManager:
   - Minimap
   - Light
   - Chunk
-  - Creature
+  - Enemy
   - Nature
   - 
   - Fog of war

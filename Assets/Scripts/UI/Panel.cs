@@ -1,17 +1,25 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Panel : MonoBehaviour
 {
     private Vector2 startCursor;
     private Vector2 startPosition;
-
+    private RectTransform rt;
+    private Vector2 startSize;
+    private Vector2 multiplayer;
     private float height;
+
+    private void Start()
+    {
+        rt = GetComponent<RectTransform>();
+        height = rt.rect.height / 2;
+    }
 
     public void StartDrag()
     {
         startPosition = transform.position;
         startCursor = Input.mousePosition;
-        height = GetComponent<RectTransform>().rect.height / 2;
     }
 
     public void Drag()

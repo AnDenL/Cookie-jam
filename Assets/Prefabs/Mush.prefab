@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4218911180077834795}
   - component: {fileID: 1650835586149245608}
   - component: {fileID: 5226351876781780886}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,8 +164,8 @@ MonoBehaviour:
   Speed: 5
   baseMovementSkill: {fileID: 11400000, guid: ea4783d462a9f364a8747383039e6296, type: 2}
   CanAct: 1
-  snow: {fileID: 0}
   grass: {fileID: 8300000, guid: d24da65c2860e304b9af6a0d6794c77a, type: 3}
+  snow: {fileID: 0}
   ui: {fileID: 0}
   Animator: {fileID: 0}
   Renderer: {fileID: 0}
@@ -239,6 +239,7 @@ MonoBehaviour:
   health: 15
   maxHealth: 15
   isDead: 0
+  destroyDelay: -1
 --- !u!50 &1644510013399319880
 Rigidbody2D:
   serializedVersion: 4

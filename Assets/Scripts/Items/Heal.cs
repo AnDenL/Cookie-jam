@@ -6,10 +6,13 @@ public class Heal : Item
     public float Amount;
     public AudioClip Sound;
 
-    public override void Use(Creature creature)
+    public override bool Use(Creature creature)
     {
+        if (creature.HealthComponent.Health == creature.HealthComponent.MaxHealth) return false;
+        
         creature.Heal(Amount);
         creature.PlaySound(Sound);
         ParticleManager.PlayParticle("Heal", creature.transform.position, (int)Amount);
+        return true;
     }
 }
