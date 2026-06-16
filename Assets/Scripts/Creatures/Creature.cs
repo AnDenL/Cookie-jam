@@ -98,6 +98,11 @@ public class Creature : MonoBehaviour
 
     #region Unity Lifecycle
 
+    public void SetController(AIController ai)
+    {
+        controller = Instantiate(ai);
+    }
+
     protected virtual void Awake()
     {
         HealthComponent = GetComponent<HealthBase>();

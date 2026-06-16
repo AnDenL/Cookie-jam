@@ -29,6 +29,9 @@ namespace Creatures
                 checkInterval = Time.time + 0.5f;
 
                 targetPosition = GetDirectionToTarget();
+                
+                owner.LookAt(target.transform.position);
+                
                 Skill chosen = owner.ActiveSkills
                     .OrderByDescending(s => s.Priority)
                     .FirstOrDefault(s => s.CanUse(target));
@@ -56,6 +59,7 @@ namespace Creatures
             {
                 if (Movement != null && targetPosition.magnitude != 0)
                 {
+                    owner.LookAt(owner.transform.position + (Vector3)targetPosition);
                     if (Movement.Use(targetPosition))
                     {
                         target = owner.FindTarget();

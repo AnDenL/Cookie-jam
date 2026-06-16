@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Pickaxe
   Type: 1
-  Icon: {fileID: -160377231, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
+  Icon: {fileID: 2140636885, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
   MaxStack: 99
   Stackable: 0
   Consumable: 0

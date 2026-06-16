@@ -5,6 +5,7 @@ namespace Creatures
     [CreateAssetMenu(fileName = "Dash", menuName = "CreatureAI/Skills/Dash")]
     public class Dash : DirectionSkill
     {
+        private static readonly int DashHash = Animator.StringToHash("Dash");
         public float Speed = 3f;
         public float Threshold = 0.25f;
 
@@ -18,6 +19,7 @@ namespace Creatures
         public override void Activate(Vector2 direction)
         {
             owner.Cast();
+            owner.Animator.SetTrigger(DashHash);
             owner.Rb.AddForce(Speed * direction, ForceMode2D.Impulse);
         }
 

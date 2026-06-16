@@ -2,8 +2,10 @@ using System.Collections;
 using Creatures;
 using UnityEngine;
 
-public class Kus : DirectionSkill
+[CreateAssetMenu(fileName = "Kus", menuName = "CreatureAI/Skills/Kus")]
+public class Kus : PositionSkill
 {
+    private static readonly int AttackHash = Animator.StringToHash("Attack");
     private static readonly WaitForSeconds _waitForSeconds0_2 = new(0.2f);
     public float damage;
     public float radius;
@@ -12,9 +14,9 @@ public class Kus : DirectionSkill
 
     public override void Activate(Vector2 position)
     {
-        var pos = owner.transform.position + (Vector3)position;
-        owner.Cast(MakeKus(pos));
-        ParticleManager.PlayParticle(effect, pos, 1);
+        owner.Animator.SetTrigger(AttackHash);
+        owner.Cast(MakeKus(position));
+        ParticleManager.PlayParticle(effect, position, 1);
     }
 
     public IEnumerator MakeKus(Vector2 position)
