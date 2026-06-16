@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a32cdec070d2395d9730d384aadd2be, type: 3}
   m_Name: Pickaxe
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Pickaze
   Description: 
-  Icon: {fileID: -160377231, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
+  Icon: {fileID: 1917285092, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
   RequiredObjects:
-  - Item: {fileID: 11400000, guid: a391808843a91e842a5a44042ec0a11a, type: 2}
+  - Item: {fileID: 11400000, guid: acc0d15841a56854ea453cbb805293b0, type: 2}
     Count: 1
-  - Item: {fileID: 11400000, guid: 06107f12b3a664d4783114ab3305a0ca, type: 2}
-    Count: 1
+  - Item: {fileID: 11400000, guid: ac1b18083f2af044c82b01d9aae22e6c, type: 2}
+    Count: 4
   ResultObjects:
-    Item: {fileID: 11400000, guid: 4d69246125ce716468258c35fe4fb32c, type: 2}
+    Item: {fileID: 11400000, guid: b6d1ec7c560d63042a06ba661e04a110, type: 2}
     Count: 1

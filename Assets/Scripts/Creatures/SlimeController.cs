@@ -7,7 +7,7 @@ namespace Creatures
     public class SlimeController : AIController
     {
         private float checkInterval;
-        private Vector2 targetPosition;
+        private Vector2 targetDirection;
 
         public override void Init(Creature owner)
         {
@@ -28,9 +28,9 @@ namespace Creatures
                 target = owner.FindTarget();
                 checkInterval = Time.time + 0.5f;
 
-                targetPosition = GetDirectionToTarget();
+                targetDirection = GetDirectionToTarget();
                 
-                owner.LookAt(target.transform.position);
+                owner.LookAt(owner.transform.position + (Vector3)targetDirection);
                 
                 Skill chosen = owner.ActiveSkills
                     .OrderByDescending(s => s.Priority)
@@ -47,7 +47,7 @@ namespace Creatures
                             pos.Use(target.transform.position);
                             break;
                         case DirectionSkill dir:
-                            dir.Use(targetPosition);
+                            dir.Use(targetDirection);
                             break;
                         case SelfSkill self:
                             self.Use();
@@ -57,10 +57,10 @@ namespace Creatures
             }
             else
             {
-                if (Movement != null && targetPosition.magnitude != 0)
+                if (Movement != null && targetDirection.magnitude != 0)
                 {
-                    owner.LookAt(owner.transform.position + (Vector3)targetPosition);
-                    if (Movement.Use(targetPosition))
+                    owner.LookAt(owner.transform.position + (Vector3)targetDirection);
+                    if (Movement.Use(targetDirection.normalized))
                     {
                         target = owner.FindTarget();
                     }

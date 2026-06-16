@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1324647087426256938}
   - component: {fileID: 5758422217731279747}
   - component: {fileID: 6938857697661818748}
+  - component: {fileID: 6762907053158829487}
+  - component: {fileID: 4790042253268626454}
   m_Layer: 7
   m_Name: CraftTable
   m_TagString: Interactable
@@ -148,6 +150,41 @@ MonoBehaviour:
   outlineMaterial: {fileID: 2100000, guid: dee6b960229a60d408dd5c51a87ff5f5, type: 2}
   sr: {fileID: 1324647087426256938}
   canBeInteracted: 1
+--- !u!114 &6762907053158829487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241106736165794804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0708e8fb75c97854dacfa31bd99bc77d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drop:
+  - itemStack:
+      Item: {fileID: 11400000, guid: 693dcf4e425fa7f41928f358ebb18627, type: 2}
+      Count: 1
+    chance: 100
+  itemPrefab: {fileID: 217059824956293481, guid: 91e24390e2196af44b223908b74b1bfa, type: 3}
+--- !u!114 &4790042253268626454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241106736165794804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1714d37627b7eb14c81cdc2766330747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3.5
+  maxHealth: 3.5
+  reduction: 0.5
+  isDead: 0
+  destroyDelay: 0
 --- !u!1 &7446754755001056133
 GameObject:
   m_ObjectHideFlags: 0

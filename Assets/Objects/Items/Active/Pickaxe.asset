@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Pickaxe
   Type: 1
-  Icon: {fileID: 2140636885, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
+  Icon: {fileID: 1917285092, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
   MaxStack: 99
   Stackable: 0
   Consumable: 0
-  damage: 10
-  radius: 2.5
+  damage: 6
+  radius: 2
   cooldown: 0.5
   effect: BigSlash
   zoffset: 90

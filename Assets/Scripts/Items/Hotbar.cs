@@ -30,9 +30,9 @@ public class Hotbar : MonoBehaviour
 
     private void Update()
     {
-        if (!PlayerController.Player.CanAct) return;
+        if (!PlayerController.Player.CanAct || HoverUI()) return;
 
-        if (Input.GetMouseButtonDown(0) && !HoverUI()) 
+        if (Input.GetMouseButtonDown(0)) 
         {
             if (hotbarItems[selected].Use(PlayerController.Player) && hotbarItems[selected].Consumable) 
             {

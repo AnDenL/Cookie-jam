@@ -85,8 +85,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1714d37627b7eb14c81cdc2766330747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
-  maxHealth: 25
+  health: 12
+  maxHealth: 12
+  reduction: 4
   isDead: 0
   destroyDelay: 1
 --- !u!114 &6557979709018328189

@@ -5,6 +5,7 @@ public class BuildingItem : Item
 {
     public GameObject Prefab;
     public AudioClip Sound;
+    public float radius = 1f;
 
     public override bool Use(Creature creature)
     {
@@ -16,7 +17,7 @@ public class BuildingItem : Item
             return false;
         }
         
-        if (Physics2D.OverlapCircleAll(pos, 1f, LayerMask.GetMask("Nature", "Player", "Enemy", "Default")).Length > 0)
+        if (Physics2D.OverlapCircleAll(pos, radius, LayerMask.GetMask("Nature", "Player", "Enemy", "Default")).Length > 0)
         {
             return false;
         }
@@ -52,7 +53,7 @@ public class BuildingItem : Item
             return;
         }
         
-        if (Physics2D.OverlapCircleAll(pos, 1f, LayerMask.GetMask("Nature", "Player", "Enemy", "Default")).Length > 0)
+        if (Physics2D.OverlapCircleAll(pos, radius, LayerMask.GetMask("Nature", "Player", "Enemy", "Default")).Length > 0)
         {
             Preview.Instance.color = Color.red;
             return;

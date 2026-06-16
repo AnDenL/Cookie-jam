@@ -19,6 +19,8 @@ public class HealthBase : MonoBehaviour
         }
     }
 
+    public float reduction;
+
     [SerializeField] protected bool isDead;
     public bool IsDead => isDead;
 
@@ -36,6 +38,8 @@ public class HealthBase : MonoBehaviour
 
     public void TakeHit(float damage)
     {
+        damage -= reduction;
+        if (damage <= 0) return;
         health -= damage;
 
         OnHit?.Invoke(damage);

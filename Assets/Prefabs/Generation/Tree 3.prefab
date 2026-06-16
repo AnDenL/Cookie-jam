@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   maxHealth: 15
+  reduction: 1
   isDead: 0
   destroyDelay: 1
 --- !u!114 &435429721241742266

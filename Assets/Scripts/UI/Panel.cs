@@ -13,7 +13,7 @@ public class Panel : MonoBehaviour
     private void Start()
     {
         rt = GetComponent<RectTransform>();
-        height = rt.rect.height / 2;
+        height = rt.rect.height / 2 * Screen.height / 1080;
     }
 
     public void StartDrag()

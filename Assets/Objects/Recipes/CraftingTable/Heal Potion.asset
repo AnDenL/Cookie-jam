@@ -15,7 +15,9 @@ MonoBehaviour:
   Name: 
   Description: 
   Icon: {fileID: 0}
-  RquiredObjects: []
+  RequiredObjects:
+  - Item: {fileID: 11400000, guid: ae736aa29b7a9e74d8e28aca5e38672c, type: 2}
+    Count: 0
   ResultObjects:
-    Item: {fileID: 0}
+    Item: {fileID: 11400000, guid: ae736aa29b7a9e74d8e28aca5e38672c, type: 2}
     Count: 0

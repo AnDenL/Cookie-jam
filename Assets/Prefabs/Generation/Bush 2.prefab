@@ -182,9 +182,10 @@ GameObject:
   - component: {fileID: -4916734036487000528}
   - component: {fileID: -728533750817469163}
   - component: {fileID: -2957711381069224522}
+  - component: {fileID: -8600009012236594727}
   m_Layer: 12
   m_Name: Bush 2
-  m_TagString: Untagged
+  m_TagString: Trans
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,3 +328,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8600009012236594727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765042089600168753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062511ef562f1004d8b5fc1632a9056d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4878098725032756733, guid: d1728edda47b93e4db146c7cef1ed6a3, type: 3}
