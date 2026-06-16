@@ -22,7 +22,7 @@ public class Hand : Item
         
         creature.PlaySound(sound);
 
-        var hits = Physics2D.OverlapCircleAll(pos, 1.5f, LayerMask.GetMask("Nature"));
+        var hits = Physics2D.OverlapCircleAll(pos, 1.5f, LayerMask.GetMask("Nature", "Enemy"));
 
         foreach (var hit in hits)
         {
