@@ -7,6 +7,7 @@ public class PHealthUI : MonoBehaviour
 {
     [SerializeField] private Material material;
     [SerializeField] private TextMeshProUGUI hpText;
+    [SerializeField] private ShakingText shakingText;
 
     private HealthBase health;
     private float final;
@@ -24,6 +25,7 @@ public class PHealthUI : MonoBehaviour
     private void OnHealthChange(float health, float maxHealth)
     {
         hpText.text = "" + health;
+        shakingText.enabled = health / maxHealth < 0.2f;
         final = health / maxHealth;
         anim = true;
     }

@@ -108,7 +108,8 @@ public class Creature : MonoBehaviour
 
         //inventory = new();
 
-        creatureLayerMask = LayerMask.GetMask("Creature");
+        if (controller.Alignment == Alignment.Ally) creatureLayerMask = LayerMask.GetMask("Enemy");
+        else creatureLayerMask = LayerMask.GetMask("Player");
         wallsLayerMask = LayerMask.GetMask("Walls");
 
         foreach (var template in skillTemplates)
@@ -159,7 +160,7 @@ public class Creature : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (HealthComponent.IsDead) return;
+        if (HealthComponent.IsDead && !controller.IsPlayer) return;
         for (int i = effects.Count - 1; i >= 0; i--)
         {
             effects[i].Tick(Time.deltaTime);

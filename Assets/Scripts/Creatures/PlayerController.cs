@@ -16,8 +16,6 @@ namespace Creatures
 
         public override bool IsPlayer => true;
 
-        //public WeaponManager WeaponManager { get; private set; }
-
         public override void Init(Creature owner)
         {
             base.Init(owner);
@@ -27,8 +25,6 @@ namespace Creatures
                 NewSlot(skill);
 
             owner.OnNewSkill += NewSlot;
-
-            //WeaponManager = owner.GetComponentInChildren<WeaponManager>();
             SkillSlots.Add(KeyCode.F, new EventSkillSlot(
                 () => {      
                     var temp = Physics2D.OverlapCircleAll(owner.transform.position, 1.5f, LayerMask.GetMask("Interactable"));
@@ -48,22 +44,8 @@ namespace Creatures
                             }
                         }
                     }
-
-                    // if (nearestCollider != null && nearestCollider.TryGetComponent(out ItemPickUp item))
-                    // {
-                    //     item.Use(owner);
-                    // }
                 }
             ));
-
-            // if (WeaponManager)
-            // {
-            //     SkillSlots.Add(KeyCode.R, new EventSkillSlot(WeaponManager.Reload));
-            // }
-            // if (owner.Inventory.maxSlots != 0)
-            // {
-            //     SkillSlots.Add(KeyCode.Alpha1, new EventSkillSlot(Hotbar.Use));
-            // }
         }
 
         public override void UpdateAI()
@@ -80,23 +62,12 @@ namespace Creatures
 
             owner.LookAt(Game.mainCamera.ScreenToWorldPoint(Input.mousePosition));
 
-            if (!Minimap.Instance.IsOpened)
+            if (!(Minimap.Instance.IsOpened || Player.HealthComponent.IsDead))
             {
                 foreach (var slot in SkillSlots)
                     if (slot.Value.OnKeyDown ? Input.GetKeyDown(slot.Key) : Input.GetKey(slot.Key)) slot.Value.Use();
-                
-                //if (WeaponManager != null) HandleWeaponManager();
             }
             Movement.Use(moveDir);
-        }
-
-        private void HandleWeaponManager()
-        {
-            //WeaponManager.Rotate(Game.mainCamera.ScreenToWorldPoint(Input.mousePosition));
-
-            if (Input.mouseScrollDelta.y == 0) return;
-            int direction = Input.mouseScrollDelta.y > 0 ? -1 : 1;
-            //WeaponManager.Scroll(direction);
         }
 
         public override Vector3 GetDirectionToTarget() =>
@@ -119,7 +90,6 @@ namespace Creatures
             SkillSlots.Add(key, skillSlot);
         }
 
-        //Default key bindings for different skill types, can be customized by player later
         private static KeyCode GetKeyCodeByType(SkillType type)
         {
             KeyCode result = KeyCode.None;

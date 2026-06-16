@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HealthGreen
+  m_Name: PotionBlue
   m_Shader: {fileID: -6465566751694194690, guid: 12c67539d61c6d44fad825b1de99ed73, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -55,17 +55,17 @@ Material:
     m_Ints: []
     m_Floats:
     - _Cells1: 6
-    - _Cells2: 8
-    - _Health: 1
+    - _Cells2: 9
+    - _Health: 0.9434319
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scroll: 3
-    - _Seed: 3
+    - _Seed: 5
     - _pixels: 32
     - _pixels_1: 96
     m_Colors:
-    - _Color: {r: 0.77270657, g: 1, b: 0.759434, a: 1}
-    - _Color_1: {r: 0.061154485, g: 1, b: 0, a: 1}
-    - _Color_2: {r: 0.6933962, g: 1, b: 0.7036164, a: 1}
+    - _Color: {r: 0.7607843, g: 0.92377114, b: 1, a: 1}
+    - _Color_1: {r: 0, g: 0.3371575, b: 1, a: 1}
+    - _Color_2: {r: 0.69411767, g: 0.8152552, b: 1, a: 1}
     - _Tilling: {r: 1, g: 0.88, b: 0, a: 0}
   m_BuildTextureStacks: []
