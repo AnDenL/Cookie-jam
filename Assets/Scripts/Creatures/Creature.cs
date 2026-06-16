@@ -358,6 +358,7 @@ public class Creature : MonoBehaviour
     {
         Source.Play();
         Animator.SetTrigger(_hitHash);
+        if (Renderer) StartCoroutine(HitAnim());
     }    
     protected void OnDeath()
     {
@@ -372,6 +373,32 @@ public class Creature : MonoBehaviour
 
         if (ui != null) ui.gameObject.SetActive(active);
     }
+
+    private float t = 0;
+    protected IEnumerator HitAnim()
+    {
+        var is_playing = t > 0; 
+        t = 1.5f;
+        float scale = controller.IsPlayer ? 1.5f : 15f;
+
+        if (is_playing) yield break;
+
+        while (t > 0)
+        {
+            t -= Time.deltaTime * scale;
+            float tt = t*t;
+
+            var val = Mathf.Sin(t * 20) * tt + tt;
+
+            Renderer.material.color = new Color(1, 1 - val, 1 - val);
+
+            yield return null;
+        }
+
+        Renderer.material.SetFloat("_Hit", 0);
+        t = 0;
+    }
+
 
     #endregion
 }

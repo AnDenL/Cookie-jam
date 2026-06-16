@@ -4,7 +4,9 @@ using UnityEngine;
 public class Hand : Item
 {
     public float damage;
+    public float radius = 1.5f;
     public float cooldown;
+    public string effect = "Slash";
     public float zoffset;
     public AudioClip sound;
 
@@ -18,17 +20,17 @@ public class Hand : Item
         var pos = (Vector2)creature.transform.position + dir.normalized;
         var angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
 
-        ParticleManager.PlayParticle("Slash", pos, 1, angle - zoffset);
+        ParticleManager.PlayParticle(effect, pos, 1, angle - zoffset);
         
         creature.PlaySound(sound);
 
-        var hits = Physics2D.OverlapCircleAll(pos, 1.5f, LayerMask.GetMask("Nature", "Enemy"));
+        var hits = Physics2D.OverlapCircleAll(pos, radius, LayerMask.GetMask("Nature", "Enemy"));
 
         foreach (var hit in hits)
         {
             if (hit.TryGetComponent(out HealthBase health))
             {
-                health.TakeHit(1);
+                health.TakeHit(damage);
             }
         }
         lastAttack = Time.time;

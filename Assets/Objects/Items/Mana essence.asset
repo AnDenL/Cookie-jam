@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eecc925d2466c2e4991391dc5b118d66, type: 3}
   m_Name: Mana essence
   m_EditorClassIdentifier: 
-  Name: Mana essence
+  Name: Mana essense
   Type: 0
-  Icon: {fileID: 1615508634, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
+  Icon: {fileID: 1745213631, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
   MaxStack: 99
   Stackable: 1
   Consumable: 0

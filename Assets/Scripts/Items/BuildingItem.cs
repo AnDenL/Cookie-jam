@@ -25,6 +25,39 @@ public class BuildingItem : Item
 
         creature.PlaySound(Sound);
         ParticleManager.PlayParticle("Poof", pos, 10);
+        Preview.Instance.enabled = false;
         return true;
+    }
+
+    public override void Deselect(Creature creature)
+    {
+        Preview.Instance.enabled = false;
+    }
+
+    public override void Select(Creature creature)
+    {
+        Preview.Instance.enabled = true;
+    }
+
+    public override void WhileSelected(Creature creature)
+    {
+        Preview.Instance.enabled = true;
+        Vector2Int pos = Vector2Int.RoundToInt(Game.mainCamera.ScreenToWorldPoint(Input.mousePosition));
+
+        Preview.Instance.transform.position = (Vector2)pos;
+
+        if (Vector2.Distance(creature.transform.position, pos) > 5) 
+        {
+            Preview.Instance.color = Color.red;
+            return;
+        }
+        
+        if (Physics2D.OverlapCircleAll(pos, 1f, LayerMask.GetMask("Nature", "Player", "Enemy", "Default")).Length > 0)
+        {
+            Preview.Instance.color = Color.red;
+            return;
+        }
+
+        Preview.Instance.color = Color.white;
     }
 }

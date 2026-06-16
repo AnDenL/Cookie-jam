@@ -4,6 +4,7 @@ using UnityEngine;
 public class Heal : Item
 {
     public float Amount;
+    public bool Dispel;
     public AudioClip Sound;
 
     public override bool Use(Creature creature)

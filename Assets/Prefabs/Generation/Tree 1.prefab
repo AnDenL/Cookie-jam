@@ -321,9 +321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28dedeaf399e7f94dbbed8e7af23aa22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Particles: 
-  Amount: 0
-  offset: {x: 0, y: 0}
+  Particles: Leafs
+  Amount: 1
+  offset: {x: 0, y: 0.25}
 --- !u!1 &5553141667159590603
 GameObject:
   m_ObjectHideFlags: 0

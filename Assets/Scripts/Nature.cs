@@ -21,6 +21,7 @@ public class Nature : MonoBehaviour
     [SerializeField] private float rainChance;
     [SerializeField] private ParticleSystem rain;
     [SerializeField] private ParticleSystem snow;
+    [SerializeField] private ParticleSystem fireflys;
 
     [Header("Audio Sources")]
     [SerializeField] private AudioSource nightSounds;
@@ -39,6 +40,7 @@ public class Nature : MonoBehaviour
 
     private ParticleSystem.EmissionModule rainEmission;
     private ParticleSystem.EmissionModule snowEmission;
+    private ParticleSystem.EmissionModule ffEmission;
     
     public event Action<int> NextHour;
     public event Action<int> NewDay;
@@ -47,6 +49,7 @@ public class Nature : MonoBehaviour
     {
         rainEmission = rain.emission;
         snowEmission = snow.emission;
+        ffEmission = fireflys.emission;
         StartCoroutine(HourTimer());
     }
 
@@ -59,6 +62,14 @@ public class Nature : MonoBehaviour
 
         Light.color = lightColorOverDay.Evaluate(normalizedTime);
         precipitationAmount = Mathf.Lerp(rainAmoutPreviousHour, rainDuringHour, t);
+
+        if (Generation.CurrentBiome == Biome.Forest && (hour > 19 || hour < 3))
+        {
+            ffEmission.rateOverTime = 10;
+        }
+        else
+            ffEmission.rateOverTime = 0;
+
         if (Generation.CurrentBiome == Biome.Field || Generation.CurrentBiome == Biome.Forest) 
         {  
             rainEmission.rateOverTime = precipitationAmount;

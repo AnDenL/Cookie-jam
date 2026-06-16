@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff868363d1c145f478572a71cc39641d, type: 3}
+  m_Name: Healing potion
+  m_EditorClassIdentifier: 
+  Name: Healing potion
+  Type: 1
+  Icon: {fileID: -783795384, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
+  MaxStack: 99
+  Stackable: 1
+  Consumable: 1
+  Amount: 25
+  Sound: {fileID: 8300000, guid: 08a19849e0b235147b2504227886bd04, type: 3}

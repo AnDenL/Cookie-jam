@@ -8,6 +8,17 @@ public class HealthBase : MonoBehaviour
     [SerializeField] protected float maxHealth;
     public float MaxHealth => maxHealth;
 
+    public float HealthEditable
+    {
+        get => health;
+        set
+        {
+            health = MathF.Min(value, maxHealth);
+            OnHealthChange?.Invoke(health, maxHealth);
+            if (value <= 0) Death();
+        }
+    }
+
     [SerializeField] protected bool isDead;
     public bool IsDead => isDead;
 
