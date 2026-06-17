@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff868363d1c145f478572a71cc39641d, type: 3}
+  m_Script: {fileID: 11500000, guid: 965d11fa8cfae984caed234e00ff0398, type: 3}
   m_Name: Healing potion
   m_EditorClassIdentifier: 
   Name: Healing potion
@@ -18,5 +18,7 @@ MonoBehaviour:
   MaxStack: 99
   Stackable: 1
   Consumable: 1
-  Amount: 25
+  Light: 0
+  effect: {fileID: 11400000, guid: 5febaa6f6b79a5c448b5213be9d79b68, type: 2}
+  Dispel: 0
   Sound: {fileID: 8300000, guid: 08a19849e0b235147b2504227886bd04, type: 3}

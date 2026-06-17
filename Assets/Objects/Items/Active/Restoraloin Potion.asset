@@ -18,5 +18,7 @@ MonoBehaviour:
   MaxStack: 99
   Stackable: 1
   Consumable: 1
+  Light: 0
   Amount: 50
+  Dispel: 0
   Sound: {fileID: 8300000, guid: 08a19849e0b235147b2504227886bd04, type: 3}

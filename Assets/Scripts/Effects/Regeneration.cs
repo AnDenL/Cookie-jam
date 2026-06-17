@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Regeneration", menuName = "Game/Effects/Regeneration")]
 public class Regeneration : Effect
 {
+    public override bool IsPositive() => true;
+
     public override void OnApply()
     {
         

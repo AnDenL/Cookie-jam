@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 5226351876781780886}
   m_Layer: 6
   m_Name: Mush
-  m_TagString: Untagged
+  m_TagString: Companion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   maxHealth: 15
+  reduction: 0
   isDead: 0
   destroyDelay: -1
 --- !u!50 &1644510013399319880

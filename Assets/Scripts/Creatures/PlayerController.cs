@@ -14,6 +14,8 @@ namespace Creatures
         public static PlayerController Instance;
         public static bool CanInteract = true;
 
+        public static int Temperature;
+
         public override bool IsPlayer => true;
 
         public override void Init(Creature owner)

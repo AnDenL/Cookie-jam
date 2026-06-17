@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Generation : MonoBehaviour
 {
+    private static readonly int EnabledHash = Animator.StringToHash("Enabled");
     public static Generation instance;
     public static Biome CurrentBiome;
 
@@ -20,6 +21,8 @@ public class Generation : MonoBehaviour
 
     [SerializeField] private Material terrain;
     [SerializeField] private Texture2D noisemap;
+    [SerializeField] private Animator frostEffect;
+    [SerializeField] private Effect frostSlow;
     [SerializeField] private float scale;
 
     private Dictionary<Vector2Int, Chunk> chunks;
@@ -103,10 +106,18 @@ public class Generation : MonoBehaviour
             Vector2Int position = Vector2Int.FloorToInt((PlayerController.Player.transform.position + Vector3.one * 8) / 16);
             ValidateAround(position);
 
-            CurrentBiome = CheckBiome(position);
+            frostEffect.SetBool(EnabledHash, PlayerController.Temperature < 2 && CurrentBiome == Biome.Snow && (!Nature.IsDay() || Nature.Instance.precipitationAmount > 100));
 
-            if (CurrentBiome == Biome.Snow) 
-                ParticleManager.PlayParticle("Breath", PlayerController.Player.transform.position, 1);
+            if (PlayerController.Temperature < 2)
+            {
+                CurrentBiome = CheckBiome(position);
+
+                if (CurrentBiome == Biome.Snow) 
+                {
+                    ParticleManager.PlayParticle("Breath", PlayerController.Player.transform.position, 1);
+                    if (!Nature.IsDay()) PlayerController.Player.AddEffect(frostSlow);
+                }
+            }
 
             if (chunks.Count > 60)
             {

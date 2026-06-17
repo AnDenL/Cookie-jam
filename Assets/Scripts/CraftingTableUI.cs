@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Creatures;
 using UnityEngine;
 
 public class CraftingTableUI : MonoBehaviour
@@ -12,14 +13,12 @@ public class CraftingTableUI : MonoBehaviour
 
     private List<RecipeSlot> recipeSlots = new();
 
-    private void Awake()
-    {
-        instance = this;
-        gameObject.SetActive(false);
-    }
-
     private void Start()
     {
+        PlayerController.Player.Inventory.OnSlotChange += UpdateUI;
+
+        instance = this;
+        
         foreach (var recipe in recipes)
         {
             recipeSlots.Add(Instantiate(recipeSlotPrefab, recipesgrid).GetComponent<RecipeSlot>());

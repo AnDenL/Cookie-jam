@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a32cdec070d2395d9730d384aadd2be, type: 3}
+  m_Name: Restiralion potion
+  m_EditorClassIdentifier: 
+  Name: 
+  Description: 
+  Icon: {fileID: -160377231, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
+  RequiredObjects:
+  - Item: {fileID: 11400000, guid: cd77e021dd8cf3545b3ae503941546fe, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: 27c20fc30a7c50d40b832b5293e78f40, type: 2}
+    Count: 5
+  - Item: {fileID: 11400000, guid: 097dc75320e15f047a5461028b9707d5, type: 2}
+    Count: 2
+  ResultObjects:
+    Item: {fileID: 11400000, guid: 5ed4e31cd3ff2ce16b4fc1d70e78e530, type: 2}
+    Count: 1

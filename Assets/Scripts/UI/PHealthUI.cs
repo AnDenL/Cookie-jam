@@ -24,7 +24,7 @@ public class PHealthUI : MonoBehaviour
 
     private void OnHealthChange(float health, float maxHealth)
     {
-        hpText.text = "" + health;
+        hpText.text = "" + Mathf.Round(health);
         shakingText.enabled = health / maxHealth < 0.2f;
         final = health / maxHealth;
         anim = true;

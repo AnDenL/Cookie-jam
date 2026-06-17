@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Effects/Stun")]
 public class StunEffect : Effect
 {
+    public override bool IsPositive() => false;
+
     public override void OnApply()
     {
         owner.CanAct = false;

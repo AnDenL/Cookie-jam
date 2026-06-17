@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class Nature : MonoBehaviour
 {
+    public static Nature Instance;
+
     [Header("Day/Night Cycle")]
     [SerializeField] private int hour;
     [SerializeField] private int day;
@@ -34,7 +36,7 @@ public class Nature : MonoBehaviour
     private float lastHeavyRain;
 
     private float hourProgress;
-    private float precipitationAmount;
+    public float precipitationAmount;
     private float rainAmoutPreviousHour;
     private bool isNight;
 
@@ -47,11 +49,14 @@ public class Nature : MonoBehaviour
 
     private void Start()
     {
+        Instance = this;
         rainEmission = rain.emission;
         snowEmission = snow.emission;
         ffEmission = fireflys.emission;
         StartCoroutine(HourTimer());
     }
+
+    public static bool IsDay() => Instance.hour < 20 && Instance.hour > 4;
 
     private void Update()
     {
@@ -63,7 +68,7 @@ public class Nature : MonoBehaviour
         Light.color = lightColorOverDay.Evaluate(normalizedTime);
         precipitationAmount = Mathf.Lerp(rainAmoutPreviousHour, rainDuringHour, t);
 
-        if (Generation.CurrentBiome == Biome.Forest && (hour > 19 || hour < 3))
+        if (Generation.CurrentBiome == Biome.Forest && !IsDay())
         {
             ffEmission.rateOverTime = 10;
         }

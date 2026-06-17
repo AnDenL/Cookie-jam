@@ -9,6 +9,8 @@ public abstract class Effect : ScriptableObject
     protected Creature owner;
     protected float timeLeft;
 
+    public abstract bool IsPositive();
+
     public virtual void Init(Creature owner)
     {
         this.owner = owner;

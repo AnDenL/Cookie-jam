@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5956578542857718658}
   m_Layer: 6
   m_Name: Ent
-  m_TagString: Player
+  m_TagString: Companion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
