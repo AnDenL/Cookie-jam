@@ -79,10 +79,6 @@ public class Creature : MonoBehaviour
     public bool FacingRight { get; private set;}
     public Coroutine ChannelingSkill { get; private set;}
 
-    private static readonly Collider2D[] targetSearchBuffer = new Collider2D[16];
-    private LayerMask creatureLayerMask;
-    private LayerMask wallsLayerMask;
-
     #endregion
 
     #region Events
@@ -112,10 +108,6 @@ public class Creature : MonoBehaviour
         Source = GetComponent<AudioSource>();
 
         //inventory = new();
-
-        if (controller.Alignment == Alignment.Ally) creatureLayerMask = LayerMask.GetMask("Enemy");
-        else creatureLayerMask = LayerMask.GetMask("Player");
-        wallsLayerMask = LayerMask.GetMask("Walls");
 
         foreach (var template in skillTemplates)
         {
@@ -254,42 +246,6 @@ public class Creature : MonoBehaviour
     {
         if (other == null || other == this) return false;
         return AlignmentSystem.IsEnemy(Alignment, other.Alignment);
-    }
-
-    public virtual Creature FindTarget()
-    {
-        int count = Physics2D.OverlapCircleNonAlloc(transform.position, VisionRange, targetSearchBuffer, creatureLayerMask);
-
-        Creature bestTarget = null;
-        float bestDist = Mathf.Infinity;
-        Vector3 myPos = transform.position;
-
-        for (int i = 0; i < count; i++)
-        {
-            Collider2D hit = targetSearchBuffer[i];
-            
-            if (hit.TryGetComponent(out Creature creature))
-            {
-                if (creature == this) continue;
-                if (!creature.IsEnemyTo(this)) continue;
-                if (creature.HealthComponent.IsDead) continue;
-
-                float dist = Vector2.Distance(myPos, creature.transform.position);
-                if (dist >= bestDist) continue;
-
-                Vector2 dir = (creature.transform.position - myPos).normalized;
-                RaycastHit2D block = Physics2D.Raycast(myPos, dir, dist, wallsLayerMask);
-                
-                if (block.collider == null)
-                {
-                    bestDist = dist;
-                    bestTarget = creature;
-                }
-            }
-        }
-        Array.Clear(targetSearchBuffer, 0, count); 
-
-        return bestTarget;
     }
 
     public virtual bool Cast()

@@ -18,6 +18,7 @@ MonoBehaviour:
   MaxStack: 99
   Stackable: 1
   Consumable: 1
+  Light: 1
   Prefab: {fileID: 2467019421380721468, guid: 9cc7ab218c9f80d4c975f3bcb9f0e964, type: 3}
   Sound: {fileID: 8300000, guid: 1d4d9e25a8f4b2c489054ad3fdd83fd2, type: 3}
   radius: 0.75

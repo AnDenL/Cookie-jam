@@ -11,6 +11,11 @@ public class CraftingTable : Interactable
             CraftingTableUI.instance.gameObject.SetActive(false);
     }
 
+    private void OnDestroy()
+    {
+        CraftingTableUI.instance.gameObject.SetActive(false);
+    }
+
     public override void Interact(Creature creature)
     {
         CraftingTableUI.instance.gameObject.SetActive(!CraftingTableUI.instance.gameObject.activeInHierarchy);

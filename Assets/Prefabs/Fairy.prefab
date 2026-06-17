@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drop:
   - itemStack:
-      Item: {fileID: 11400000, guid: 896090cceed0d3241b6481cc73fd3da2, type: 2}
+      Item: {fileID: 11400000, guid: 20dbbf85963e3004ca1107530482ea7f, type: 2}
       Count: 1
     chance: 100
   itemPrefab: {fileID: 217059824956293481, guid: 91e24390e2196af44b223908b74b1bfa, type: 3}

@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   maxHealth: 15
+  reduction: 0
   isDead: 0
   destroyDelay: 0
 --- !u!50 &4841877014189816319
@@ -340,6 +341,10 @@ MonoBehaviour:
       Item: {fileID: 11400000, guid: ed3560593a1c38d4d876ddc686572224, type: 2}
       Count: 1
     chance: 50
+  - itemStack:
+      Item: {fileID: 11400000, guid: 896090cceed0d3241b6481cc73fd3da2, type: 2}
+      Count: 1
+    chance: 100
   itemPrefab: {fileID: 217059824956293481, guid: 91e24390e2196af44b223908b74b1bfa, type: 3}
 --- !u!1 &6341567824233929767
 GameObject:

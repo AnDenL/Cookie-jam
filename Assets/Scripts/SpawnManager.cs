@@ -12,8 +12,8 @@ class CreaturesSpawner : MonoBehaviour
     [SerializeField] float spawnProbability = 0.1f;
     [SerializeField] float spawnCooldown = 30f;
     [SerializeField] int maximumCreaturesCount = 10;
-    [SerializeField] Creature[] creaturesToSpawn;
-    [SerializeField] GameObject spawnPrefab;
+    //[SerializeField] Creature[] creaturesToSpawn;
+    [SerializeField] GameObject[] spawnPrefabs;
     [SerializeField] Queue<Creature> spawnedCreatures = new();
 
     private float _cooldownTime;
@@ -57,9 +57,9 @@ class CreaturesSpawner : MonoBehaviour
         }
     }
 
-    public Creature GetRandomCreatureInBiome(Biome biome)
+    public GameObject GetRandomCreatureInBiome(Biome biome)
     {
-        return creaturesToSpawn[Random.Range(0, creaturesToSpawn.Length)]; // TODO: actually look at biome
+        return spawnPrefabs[Random.Range(0, spawnPrefabs.Length)]; // TODO: actually look at biome
     }
 
     public void SpawnRandomCreatureAtRandomPositionInPlayerRange()
@@ -71,21 +71,15 @@ class CreaturesSpawner : MonoBehaviour
         
         // get correct creature
         Biome biomeAtSpawnPoint = Generation.CheckBiome((Vector2Int)Vector3Int.RoundToInt(spawnPosition));
-        Creature randomCreature = GetRandomCreatureInBiome(biomeAtSpawnPoint);
+        GameObject randomCreature = GetRandomCreatureInBiome(biomeAtSpawnPoint);
         
-        // spawn
-        SpawnCreatureAtPosition(randomCreature, spawnPosition);
+        GameObject go = Instantiate(GetRandomCreatureInBiome(biomeAtSpawnPoint), spawnPosition, Quaternion.identity);
+        RegisterCreature(randomCreature);
     }
 
-    public void SpawnCreatureAtPosition(Creature creature, Vector3 position)
+    public static void RegisterCreature(GameObject creature)
     {
-        GameObject go = Instantiate(spawnPrefab, position, Quaternion.identity); // TODO: assign correct creature
-        RegisterCreature(creature);
-    }
-
-    public static void RegisterCreature(Creature creature)
-    {
-        Instance.spawnedCreatures.Enqueue(creature);
+        Instance.spawnedCreatures.Enqueue(creature.GetComponent<Creature>());
     }
 
     private void UpdateAllCreaturesStates()

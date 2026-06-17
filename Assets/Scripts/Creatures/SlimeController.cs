@@ -25,7 +25,7 @@ namespace Creatures
         {
             if (checkInterval < Time.time)
             {
-                target = owner.FindTarget();
+                target = FindTarget();
                 checkInterval = Time.time + 0.5f;
 
                 targetDirection = GetDirectionToTarget();
@@ -62,7 +62,7 @@ namespace Creatures
                     owner.LookAt(owner.transform.position + (Vector3)targetDirection);
                     if (Movement.Use(targetDirection.normalized))
                     {
-                        target = owner.FindTarget();
+                        target = FindTarget();
                     }
                 }
             }

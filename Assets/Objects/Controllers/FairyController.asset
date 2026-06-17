@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 085b2f5be4f70eb4d8ade99e5ecd572b, type: 3}
-  m_Name: SmoothMovement
+  m_Script: {fileID: 11500000, guid: 1ee3ad5017ce45d43b300ae170ec4dfc, type: 3}
+  m_Name: FairyController
   m_EditorClassIdentifier: 
-  Name: 
-  Priority: 0
-  cooldownTime: 0
-  Speed: 1
+  Alignment: 0

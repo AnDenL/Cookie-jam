@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ffe72e084d333648960dc03dfe5c38a, type: 3}
-  m_Name: Slime soul
+  m_Name: Fairy soul
   m_EditorClassIdentifier: 
-  Name: Soul of slime
+  Name: Soul of fairy
   Type: 1
-  Icon: {fileID: -363959984, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
+  Icon: {fileID: -1906430012, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
   MaxStack: 1
   Stackable: 0
   Consumable: 1
   Light: 0
-  controller: {fileID: 11400000, guid: 7b9a608758329fb4dbbee5d29e51aa50, type: 2}
+  controller: {fileID: 11400000, guid: a62284aad9205674f8b7402cdc839383, type: 2}
   Sound: {fileID: 8300000, guid: eec1e4193ef76314d8697910124cc786, type: 3}

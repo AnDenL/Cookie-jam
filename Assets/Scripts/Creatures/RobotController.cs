@@ -21,7 +21,7 @@ namespace Creatures
 
             if (Time.time > checkTime)
             {
-                target = owner.FindTarget();
+                target = FindTarget();
                 checkTime = Time.time + 1f;
             }
 

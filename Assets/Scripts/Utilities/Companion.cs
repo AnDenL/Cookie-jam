@@ -6,17 +6,25 @@ public class Companion : MonoBehaviour
 {
     public Transform Target;
     
-    private Rigidbody2D rb;
     private TargetJoint2D tj;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         tj = GetComponent<TargetJoint2D>();
     }
 
     private void Update()
     {
-        tj.target = Target.position;
+        var dir = Target.position - (Target.position - transform.position).normalized;
+        tj.target = dir;
+
+        if (dir.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(1,1,1);
+        }
+        else if (dir.x < transform.position.x)
+        {
+            transform.localScale = new Vector3(-1,1,1);
+        }
     }
 }

@@ -53,7 +53,11 @@ public class Hotbar : MonoBehaviour
             itemPreview.transform.position = PlayerController.Player.transform.position + 
                 (Game.mainCamera.ScreenToWorldPoint(Input.mousePosition) - PlayerController.Player.transform.position).normalized;
         }
-        else itemPreview.enabled = false;
+        else 
+        {
+            itemPreview.enabled = false;
+            itemLight.enabled = false;
+        }
 
         if (Input.GetMouseButtonDown(0)) 
         {
