@@ -196,6 +196,10 @@ MonoBehaviour:
       Item: {fileID: 11400000, guid: acc0d15841a56854ea453cbb805293b0, type: 2}
       Count: 1
     chance: 50
+  - itemStack:
+      Item: {fileID: 11400000, guid: acc0d15841a56854ea453cbb805293b0, type: 2}
+      Count: 1
+    chance: 50
   itemPrefab: {fileID: 217059824956293481, guid: 91e24390e2196af44b223908b74b1bfa, type: 3}
 --- !u!95 &-3652263213411308922
 Animator:

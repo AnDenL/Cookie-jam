@@ -12,8 +12,9 @@ public class ItemSlot : MonoBehaviour
 
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI countText;
-    [SerializeField] private Animator animator;
     [SerializeField] private AudioClip sound;
+    
+    public Animator animator;
 
     private void Start() => animator = GetComponent<Animator>();
 

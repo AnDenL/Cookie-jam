@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1736787944917488171}
   - component: {fileID: 8562587741859190932}
   - component: {fileID: 939781417986633784}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pornolak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,6 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   maxHealth: 10
+  reduction: 0
   isDead: 0
   destroyDelay: 0
 --- !u!50 &2884113698022330941
@@ -119,7 +120,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 15
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -132,7 +133,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!82 &544206724789589583
 AudioSource:
   m_ObjectHideFlags: 0
@@ -145,7 +146,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 6785286051338397629, guid: 5710f81a31a1bde4c96e52af497b9756, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -250,7 +251,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 80f860197e912cf4faebb54fe358dd8d, type: 2}
   passiveTemplates: []
   Speed: 3
-  baseMovementSkill: {fileID: 11400000, guid: c2f2e561a5535104086af51fca3680a7, type: 2}
+  baseMovementSkill: {fileID: 11400000, guid: e9b7f20b8a5f3344eb96c2fbc9a4ba6e, type: 2}
   CanAct: 1
   grass: {fileID: 8300000, guid: eec1e4193ef76314d8697910124cc786, type: 3}
   snow: {fileID: 0}

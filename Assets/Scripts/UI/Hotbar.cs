@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using Creatures;
 using UnityEngine.EventSystems;
 using System.Linq;
+using UnityEngine.Rendering.Universal;
 
 public class Hotbar : MonoBehaviour
 {
+    private static readonly int SelectedHash = Animator.StringToHash("Selected");
     public static Hotbar instance;
 
     [SerializeField] private GameObject itemSlotPrefab;
     [SerializeField] private Item hand;
+    [SerializeField] private SpriteRenderer itemPreview;
+
+    private Light2D itemLight;
 
     private List<Item> hotbarItems = new();
     private List<ItemSlot> hotbarSlots = new();
@@ -22,6 +27,8 @@ public class Hotbar : MonoBehaviour
         instance = this;
         hotbarSlots = new();
 
+        itemLight = itemPreview.transform.GetChild(0).GetComponent<Light2D>();
+
         CreateSlot(new ItemStack(hand, 1), -1);
 
         inventory.OnItemChanged += UpdateUI;
@@ -31,6 +38,22 @@ public class Hotbar : MonoBehaviour
     private void Update()
     {
         if (!PlayerController.Player.CanAct || HoverUI()) return;
+
+        if (selected != 0)
+        {
+            itemPreview.enabled = true  ;
+            itemPreview.sprite = hotbarItems[selected].Icon;
+            if (hotbarItems[selected].Light > 0) 
+            {
+                itemLight.intensity = hotbarItems[selected].Light;
+                itemLight.enabled = true;
+            }
+            else itemLight.enabled = false;
+
+            itemPreview.transform.position = PlayerController.Player.transform.position + 
+                (Game.mainCamera.ScreenToWorldPoint(Input.mousePosition) - PlayerController.Player.transform.position).normalized;
+        }
+        else itemPreview.enabled = false;
 
         if (Input.GetMouseButtonDown(0)) 
         {
@@ -86,6 +109,9 @@ public class Hotbar : MonoBehaviour
         else if (selected > hotbarItems.Count - 1) selected = 0;
         if (previousSelected != selected)
         {
+            hotbarSlots[selected].animator.SetBool(SelectedHash, true);
+
+            hotbarSlots[previousSelected].animator.SetBool(SelectedHash, false);
             hotbarSlots[selected].SelectAnimation();
             Hints.Instance.ShowHint(hotbarItems[selected].Name, 1, AnimationCurve.Linear(0,1,1,0));
             hotbarItems[previousSelected].Deselect(PlayerController.Player);

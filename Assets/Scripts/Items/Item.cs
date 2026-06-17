@@ -11,6 +11,7 @@ public class Item : ScriptableObject
     public int MaxStack = 99;
     public bool Stackable;
     public bool Consumable;
+    public float Light = 0;
 
     public virtual bool Use(Creature creature) { return false; }
     public virtual void Select(Creature creature) {}

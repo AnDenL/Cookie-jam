@@ -39,5 +39,7 @@ public class Transformable : MonoBehaviour
 
             yield return null;
         }
+
+        Destroy(gameObject);
     }
 }
