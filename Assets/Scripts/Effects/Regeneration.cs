@@ -12,6 +12,7 @@ public class Regeneration : Effect
 
     public override void Tick(float dt)
     {
+        base.Tick(dt);
         owner.HealthComponent.HealthEditable += Strenght * dt;
     }
 

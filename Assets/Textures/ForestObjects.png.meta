@@ -1235,6 +1235,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ForestObjects_53
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 21
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0303ce1c76d59bb44931ab106072b1bc
+      internalID: 2045111733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestObjects_54
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 17
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3e6db6d99d50aeab754fb355465c92
+      internalID: -1946240789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestObjects_55
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 1
+        width: 9
+        height: 8
+      alignment: 9
+      pivot: {x: 0.49999565, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34360d5f5558dd133994908ab477ceaa
+      internalID: 761387022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestObjects_56
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 1
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e23d05cdcd21a7101b48fd3eee1e04a2
+      internalID: -228453767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestObjects_57
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 10
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2e83d07f1e9ee1af9e790eb167bb639
+      internalID: 530504514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1295,6 +1400,12 @@ TextureImporter:
       ForestObjects_50: 1973261136
       ForestObjects_51: 305544692
       ForestObjects_52: 1266932870
+      ForestObjects_53: 2045111733
+      ForestObjects_54: -1946240789
+      ForestObjects_55: 761387022
+      ForestObjects_56: -228453767
+      ForestObjects_57: 530504514
+      ForestObjects_58: -1345028869
       ForestObjects_6: 1909402512
       ForestObjects_7: -1739962463
       ForestObjects_8: 1938343695

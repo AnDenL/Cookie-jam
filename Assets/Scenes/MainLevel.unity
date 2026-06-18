@@ -31305,6 +31305,16 @@ MonoBehaviour:
     Biomes: 8
   - prefab: {fileID: 4980775953781064182, guid: 4de986bc01082f048a944c8ea229e11f, type: 3}
     Biomes: 4
+  - prefab: {fileID: 2024990409249101543, guid: b98ff34ba97ec66058828253aa6aac37, type: 3}
+    Biomes: 2
+  - prefab: {fileID: 2024990409249101543, guid: 20630f4cf0d700008a73365ab35f7f05, type: 3}
+    Biomes: 2
+  - prefab: {fileID: 2024990409249101543, guid: af3a28049b1f347a6aaa2cf5bc4ca5b2, type: 3}
+    Biomes: 2
+  - prefab: {fileID: 2024990409249101543, guid: 591368e16cd5672ddb309605e6495e13, type: 3}
+    Biomes: 2
+  - prefab: {fileID: 2024990409249101543, guid: 296f64d7f7cd1e3fe893852dd2cce131, type: 3}
+    Biomes: 2
   minimapCamera: {fileID: 1156502166}
   terrain: {fileID: 2100000, guid: 85c52a14812ebd040b7d4e174eae2836, type: 2}
   noisemap: {fileID: 2800000, guid: f1a2b5ebf49855442a6f391c2e0c18d8, type: 3}
@@ -31705,6 +31715,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6192547732254680254, guid: dd23b973dd6434c4f8917e6a2c908fe7, type: 3}
+      propertyPath: skillTemplates.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192547732254680254, guid: dd23b973dd6434c4f8917e6a2c908fe7, type: 3}
+      propertyPath: skillTemplates.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: a8a8d0dfe96678d458bfede324f4b06a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

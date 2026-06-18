@@ -9,11 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eecc925d2466c2e4991391dc5b118d66, type: 3}
+  m_Script: {fileID: 11500000, guid: 965d11fa8cfae984caed234e00ff0398, type: 3}
   m_Name: Fly mushroom
   m_EditorClassIdentifier: 
-  Name: Fly Mushroom
-  Type: 0
+  Name: 'Amanita muscaria '
+  Type: 1
   Icon: {fileID: -45861411, guid: 4e5df40341f319147b542f8fa652dc1c, type: 3}
   MaxStack: 99
   Stackable: 1
+  Consumable: 1
+  Light: 100
+  effect: {fileID: 11400000, guid: db357867fd12af830b7ce61568147d43, type: 2}
+  Dispel: 0
+  Sound: {fileID: 8300000, guid: 08a19849e0b235147b2504227886bd04, type: 3}
