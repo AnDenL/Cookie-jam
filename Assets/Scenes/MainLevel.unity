@@ -12468,7 +12468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c691a42d570fc429cf0de5db480786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSlotPrefab: {fileID: 322404241392668290, guid: 9475efc8f09241946b73d8578e574b93, type: 3}
+  itemSlotPrefab: {fileID: 322404241392668290, guid: c4168c9d669841721bd763ee0fecebc3, type: 3}
   hand: {fileID: 11400000, guid: 63416ad954832644387d043c782c1801, type: 2}
   itemPreview: {fileID: 739808681}
 --- !u!1 &704737512

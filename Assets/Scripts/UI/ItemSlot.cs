@@ -2,6 +2,8 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 using Creatures;
+using Unity.VisualScripting;
+using System;
 
 [RequireComponent(typeof(Animator))]
 public class ItemSlot : MonoBehaviour
@@ -56,5 +58,11 @@ public class ItemSlot : MonoBehaviour
         image.sprite = null;
         image.enabled = false;
         countText.text = "";
+    }
+
+    public void OnClick()
+    {
+        int my_id = transform.GetSiblingIndex();
+        Hotbar.instance.SelectItem(my_id);
     }
 }
