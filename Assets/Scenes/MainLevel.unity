@@ -1059,7 +1059,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1566492640505388506, guid: a5bf4f48851042e4d85e267b2cd9cdc1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 471384546}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7084673942340431018, guid: a5bf4f48851042e4d85e267b2cd9cdc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 281643796}
   m_SourcePrefab: {fileID: 100100000, guid: a5bf4f48851042e4d85e267b2cd9cdc1, type: 3}
 --- !u!224 &281643790 stripped
 RectTransform:
@@ -1071,6 +1074,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7084673942340431018, guid: a5bf4f48851042e4d85e267b2cd9cdc1, type: 3}
   m_PrefabInstance: {fileID: 281643789}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &281643796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281643791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391a30cb501cc2547899e091d2808404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryPanel: {fileID: 281643791}
+  itemSlotPrefab: {fileID: 322404241392668290, guid: 9475efc8f09241946b73d8578e574b93, type: 3}
+  grid: {fileID: 1498275379}
 --- !u!1 &284470607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1263,6 @@ GameObject:
   m_Component:
   - component: {fileID: 312362916}
   - component: {fileID: 312362917}
-  - component: {fileID: 312362918}
   m_Layer: 5
   m_Name: Panels
   m_TagString: Untagged
@@ -1285,21 +1302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567fa7f6ccbdddf49b5dc75c6dcb1690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &312362918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312362915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 391a30cb501cc2547899e091d2808404, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryPanel: {fileID: 281643791}
-  itemSlotPrefab: {fileID: 322404241392668290, guid: 9475efc8f09241946b73d8578e574b93, type: 3}
-  grid: {fileID: 1498275379}
 --- !u!1 &327533128
 GameObject:
   m_ObjectHideFlags: 0
@@ -12346,7 +12348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &595754078
 Transform:
   m_ObjectHideFlags: 0
@@ -27613,7 +27615,7 @@ MonoBehaviour:
   skillTemplates:
   - {fileID: 11400000, guid: 80f860197e912cf4faebb54fe358dd8d, type: 2}
   passiveTemplates: []
-  Speed: 1
+  Speed: 0.5
   baseMovementSkill: {fileID: 11400000, guid: c2f2e561a5535104086af51fca3680a7, type: 2}
   CanAct: 1
   grass: {fileID: 8300000, guid: d24da65c2860e304b9af6a0d6794c77a, type: 3}
