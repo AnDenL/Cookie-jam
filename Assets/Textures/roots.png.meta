@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 326f4f6374e7c7a42867a508971480c2
+guid: 43442842c0e5d584f81de48e091f0255
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,55 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wat_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 12
-        width: 22
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4cbbf5786c4bc144f9ff213e61f019d0
-      internalID: -1177317497
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wat_1
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 12
-        width: 22
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: affb359308f87aa43942742242b12e7b
-      internalID: 242147297
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wat_2
+      name: roots_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 22
-        height: 12
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6f675a72a8c709408d2644f59fc47bf
-      internalID: -1609938533
+      spriteID: b6c4f82a1162a8243bf3223b0010ff61
+      internalID: -369589295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wat_3
+      name: roots_1
       rect:
         serializedVersion: 2
-        x: 22
+        x: 32
         y: 0
-        width: 22
-        height: 12
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +158,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4eeca4f168f9cb446842475967343519
-      internalID: -411000566
+      spriteID: 14a637fe0eb0122479b2d133291481f2
+      internalID: 1332286292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roots_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a24fcc250562cc442ad06396deca7b10
+      internalID: 146153381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roots_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1902ee5e3b2c3644584fdb5de4baebc1
+      internalID: 1914562105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roots_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 074b5f2e62b90df4fb99441f082feeb6
+      internalID: -857950035
       vertices: []
       indices: 
       edges: []
@@ -217,10 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wat_0: -1177317497
-      wat_1: 242147297
-      wat_2: -1609938533
-      wat_3: -411000566
+      roots_0: -369589295
+      roots_1: 1332286292
+      roots_2: 146153381
+      roots_3: 1914562105
+      roots_4: -857950035
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5406283971761101636}
   - component: {fileID: -7488112936742363561}
   - component: {fileID: -6769295392250422545}
+  - component: {fileID: -3385562951115035236}
   m_Layer: 12
   m_Name: flymushroom0
   m_TagString: Untagged
@@ -173,3 +174,18 @@ MonoBehaviour:
   Particles: 
   Amount: 3
   offset: {x: 0, y: 0}
+--- !u!114 &-3385562951115035236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024990409249101543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b9d0ccb34698248a977b1fe2b16ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 2045111733, guid: 2942a09a3f7c180469e52f629e1adc71, type: 3}
+  - {fileID: -1946240789, guid: 2942a09a3f7c180469e52f629e1adc71, type: 3}

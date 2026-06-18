@@ -21,7 +21,7 @@ public class ItemPickUp : Interactable
         if (itemChange == stack.Count && canBeInteracted)
             StartCoroutine(PickUpAnim(creature.transform));
 
-        else if (itemChange == 0)
+        else if (itemChange == 0 && creature.Controller.IsPlayer)
             Hints.Instance.ShowHint("Inventory full, cannot pick up item.", 2);
 
         else

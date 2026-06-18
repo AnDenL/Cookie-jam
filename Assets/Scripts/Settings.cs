@@ -19,7 +19,7 @@ public class Settings : MonoBehaviour
         if (resolutionDropdown != null)
         {
             resolutionDropdown.ClearOptions();
-            List<string> options = new List<string>();
+            List<string> options = new();
             resolutions = Screen.resolutions;
             int currentResolutionIndex = 0;
 
@@ -36,15 +36,18 @@ public class Settings : MonoBehaviour
             LoadSettings(currentResolutionIndex);
         }
     }
+
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
     }
+
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
+
     public void OnDisable()
     {
         PlayerPrefs.SetInt("ResolutionPreference", resolutionDropdown.value);
@@ -52,14 +55,17 @@ public class Settings : MonoBehaviour
         PlayerPrefs.SetFloat("MusicPreference", MusicSlider.value);
         PlayerPrefs.SetFloat("EffectsPreference", EffectSlider.value);
     }
+
     public void ChangeMusicVolume(float Musicvolume)
     {
-        Mixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-60, 0, Musicvolume));
+        Mixer.audioMixer.SetFloat("MusicVolume", NumToDecibel(Musicvolume));
     }
+
     public void ChangeEffectsVolume(float Effectsvolume)
     {
-        Mixer.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-60, 0, Effectsvolume));
+        Mixer.audioMixer.SetFloat("EffectsVolume",NumToDecibel(Effectsvolume));
     }
+
     public void LoadSettings(int currentResolutionIndex)
     {
         MusicSlider.value = PlayerPrefs.GetFloat("MusicPreference");
@@ -77,4 +83,6 @@ public class Settings : MonoBehaviour
         else
             Screen.fullScreen = true;
     }
+
+    public float NumToDecibel(float num) => Mathf.Log10(num) * 20;
 }
