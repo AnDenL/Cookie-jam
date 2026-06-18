@@ -123,6 +123,24 @@ public class Hotbar : MonoBehaviour
         }
     }
 
+    public void SelectItem(int id)
+    {
+        int previousSelected = selected;
+        selected = id;
+        if (selected < 0) selected = hotbarItems.Count - 1;
+        else if (selected > hotbarItems.Count - 1) selected = 0;
+        if (previousSelected != selected)
+        {
+            hotbarSlots[selected].animator.SetBool(SelectedHash, true);
+
+            hotbarSlots[previousSelected].animator.SetBool(SelectedHash, false);
+            hotbarSlots[selected].SelectAnimation();
+            Hints.Instance.ShowHint(hotbarItems[selected].Name, 1, AnimationCurve.Linear(0,1,1,0));
+            hotbarItems[previousSelected].Deselect(PlayerController.Player);
+            hotbarItems[selected].Select(PlayerController.Player);
+        }
+    }
+
     private void UpdateUI(Item item)
     {
         var id = hotbarItems.FindIndex(s => s.Id == item.Id);
