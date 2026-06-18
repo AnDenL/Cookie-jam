@@ -20,6 +20,8 @@ public class Hotbar : MonoBehaviour
     private List<ItemSlot> hotbarSlots = new();
     private int selected = 0; 
 
+    private readonly KeyCode[] keyCodes = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5, KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9 };
+
     private Inventory inventory => PlayerController.Player.Inventory;
 
     private void Start()
@@ -37,7 +39,16 @@ public class Hotbar : MonoBehaviour
 
     private void Update()
     {
-        if (!PlayerController.Player.CanAct || HoverUI()) return;
+        if (!PlayerController.Player.CanAct || Game.HoverUI()) return;
+
+        for(int i = 0 ; i < keyCodes.Length ; ++i)
+        {
+            if(Input.GetKeyDown(keyCodes[i]))
+            {
+                SelectItem(i);
+            }
+        }
+
 
         if (selected != 0)
         {
@@ -82,29 +93,6 @@ public class Hotbar : MonoBehaviour
         hotbarItems[selected].WhileSelected(PlayerController.Player);
     }
 
-    private bool HoverUI()
-    {
-        Vector2 position = Input.mousePosition;
-        PointerEventData pointer = new(EventSystem.current);
-        pointer.position = position;
-        List<RaycastResult> raycastResults = new();
-
-        EventSystem.current.RaycastAll(pointer, raycastResults);
-
-        if (raycastResults.Count > 0)
-        {
-            foreach (RaycastResult result in raycastResults)
-            {
-                if (result.distance == 0 && result.isValid)
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
     private void ScrollHotbar(int direction)
     {
         int previousSelected = selected;
@@ -126,19 +114,16 @@ public class Hotbar : MonoBehaviour
     public void SelectItem(int id)
     {
         int previousSelected = selected;
-        selected = id;
-        if (selected < 0) selected = hotbarItems.Count - 1;
-        else if (selected > hotbarItems.Count - 1) selected = 0;
-        if (previousSelected != selected)
-        {
-            hotbarSlots[selected].animator.SetBool(SelectedHash, true);
+        if (id >= 0 && id < hotbarItems.Count) selected = id;
+        else return;
 
-            hotbarSlots[previousSelected].animator.SetBool(SelectedHash, false);
-            hotbarSlots[selected].SelectAnimation();
-            Hints.Instance.ShowHint(hotbarItems[selected].Name, 1, AnimationCurve.Linear(0,1,1,0));
-            hotbarItems[previousSelected].Deselect(PlayerController.Player);
-            hotbarItems[selected].Select(PlayerController.Player);
-        }
+        hotbarSlots[selected].animator.SetBool(SelectedHash, true);
+
+        hotbarSlots[previousSelected].animator.SetBool(SelectedHash, false);
+        hotbarSlots[selected].SelectAnimation();
+        Hints.Instance.ShowHint(hotbarItems[selected].Name, 1, AnimationCurve.Linear(0,1,1,0));
+        hotbarItems[previousSelected].Deselect(PlayerController.Player);
+        hotbarItems[selected].Select(PlayerController.Player);
     }
 
     private void UpdateUI(Item item)

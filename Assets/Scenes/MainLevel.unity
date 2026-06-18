@@ -780,7 +780,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 150
+  orthographic size: 450
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -6066,7 +6066,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 8
   m_Viewport: {fileID: 0}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -12903,10 +12903,10 @@ RectTransform:
   - {fileID: 1845952486}
   m_Father: {fileID: 240305458}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &758929839
 MonoBehaviour:
@@ -13841,7 +13841,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 32, y: 27, z: 1}
+  m_LocalScale: {x: 36, y: 32, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -19137,7 +19137,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 8
   m_Viewport: {fileID: 0}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -19513,7 +19513,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156502163}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
@@ -19541,7 +19541,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 150
+  orthographic size: 450
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -19609,7 +19609,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -26, y: -26}
+  m_SizeDelta: {x: -26, y: -480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1174737202
 MonoBehaviour:
@@ -30784,7 +30784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1877018483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31681,7 +31681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5308515665252133770, guid: dd23b973dd6434c4f8917e6a2c908fe7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5308515665252133770, guid: dd23b973dd6434c4f8917e6a2c908fe7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -31738,8 +31738,8 @@ SceneRoots:
   - {fileID: 1475908849}
   - {fileID: 7262279879803365161}
   - {fileID: 1886068390}
-  - {fileID: 1156502167}
   - {fileID: 202827248}
+  - {fileID: 1156502167}
   - {fileID: 240305458}
   - {fileID: 863600067}
   - {fileID: 4439007807708099493}

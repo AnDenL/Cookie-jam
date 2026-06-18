@@ -368,6 +368,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5911858863767752408, guid: 9475efc8f09241946b73d8578e574b93, type: 3}
+      propertyPath: m_Delegates.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911858863767752408, guid: 9475efc8f09241946b73d8578e574b93, type: 3}
+      propertyPath: m_Delegates.Array.data[0].eventID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911858863767752408, guid: 9475efc8f09241946b73d8578e574b93, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDragEnd
+      objectReference: {fileID: 0}
     - target: {fileID: 7820067201054789721, guid: 9475efc8f09241946b73d8578e574b93, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

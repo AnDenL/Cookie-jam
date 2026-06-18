@@ -65,4 +65,18 @@ public class ItemSlot : MonoBehaviour
         int my_id = transform.GetSiblingIndex();
         Hotbar.instance.SelectItem(my_id);
     }
+
+    public void OnDragStart()
+    {
+        print("OnDragStart");
+        int my_id = transform.GetSiblingIndex();
+        InventoryUI.Instance.DragStart(my_id);
+    }
+
+    public void OnDragEnd()
+    {
+        print("OnDragEnd");
+        int my_id = transform.GetSiblingIndex();
+        InventoryUI.Instance.Rearrange(my_id);
+    }
 }

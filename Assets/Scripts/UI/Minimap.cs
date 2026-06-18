@@ -81,7 +81,7 @@ public class Minimap : MonoBehaviour
         float previousZoom = currentZoom;
 
         currentZoom += Input.mouseScrollDelta.y > 0 ? 0.5f : -0.5f;
-        currentZoom = Mathf.Clamp(currentZoom, 0.5f, 4);
+        currentZoom = Mathf.Clamp(currentZoom, 1f, 8f);
         Map.transform.localScale = Vector2.one * currentZoom;
         Fullmap.transform.localScale = Map.transform.localScale * 2;
 

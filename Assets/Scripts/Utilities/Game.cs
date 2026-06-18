@@ -1,5 +1,7 @@
 using UnityEngine;
 using Creatures;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public static class Game
 {
@@ -53,5 +55,30 @@ public static class Game
         }
 
         return nearestCreature;
+    }
+
+    public static bool HoverUI()
+    {
+        Vector2 position = Input.mousePosition;
+        PointerEventData pointer = new(EventSystem.current)
+        {
+            position = position
+        };
+        List<RaycastResult> raycastResults = new();
+
+        EventSystem.current.RaycastAll(pointer, raycastResults);
+
+        if (raycastResults.Count > 0)
+        {
+            foreach (RaycastResult result in raycastResults)
+            {
+                if (result.distance == 0 && result.isValid)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
