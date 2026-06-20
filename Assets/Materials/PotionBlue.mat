@@ -56,7 +56,7 @@ Material:
     m_Floats:
     - _Cells1: 6
     - _Cells2: 9
-    - _Health: 0.6246829
+    - _Health: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scroll: 3

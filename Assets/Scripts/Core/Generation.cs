@@ -10,6 +10,7 @@ public class Generation : MonoBehaviour
     public static Generation instance;
     public static Biome CurrentBiome;
 
+    [SerializeField] private GameObject portal;
     [SerializeField] private GenStruct[] genOPrefabs;
 
     private int[] fieldPrefabs;
@@ -51,6 +52,8 @@ public class Generation : MonoBehaviour
         terrain.SetVector("_4", offsets[3]);
         terrain.SetVector("_5", offsets[4]);
         terrain.SetVector("_6", offsets[5]);
+
+        Instantiate(portal, random.PointInCircle(500), Quaternion.identity);
 
         List<int> field = new();
         List<int> forest = new();
