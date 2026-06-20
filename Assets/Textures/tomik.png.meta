@@ -206,6 +206,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: tomik_5
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 0
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e0637ca87bfc304dad64e85f91f1473
+      internalID: 1414282894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -221,6 +242,8 @@ TextureImporter:
       tomik_1: 1007051145
       tomik_2: 696999464
       tomik_3: -2127506290
+      tomik_4: 219938054
+      tomik_5: 1414282894
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
