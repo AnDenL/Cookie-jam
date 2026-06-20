@@ -4,6 +4,11 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public static MainMenu Instance;
+    public static bool showAnim = true;
+
+    public GameObject anim;
+    public GameObject end;
+
     private AudioSource source;
     
     private void Awake() => Instance = this;
@@ -11,6 +16,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         source = GetComponent<AudioSource>();
+        anim.SetActive(showAnim);
     }
 
     public void LoadScene(int sceneIndex)
@@ -28,5 +34,16 @@ public class MainMenu : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void Disable()
+    {
+        showAnim = false;
+        anim.SetActive(showAnim);
+    }
+
+    public void End()
+    {
+        end.SetActive(false);
     }
 }
