@@ -8,7 +8,7 @@ public class Minimap : MonoBehaviour
     public static Minimap Instance;
     public Image Map, Fullmap;
     public Camera RenderCamera;
-    public float Scale = 2;
+    public Vector2 Scale;
     public bool IsOpened;
     
     public GameObject chunkPrefab;

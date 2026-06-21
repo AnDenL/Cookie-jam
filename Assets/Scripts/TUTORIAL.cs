@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class TUTORIAL : MonoBehaviour
 {
+    private static bool ShowTutor = true;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeInHierarchy);
+            ShowTutor = !ShowTutor;
+            transform.GetChild(0).gameObject.SetActive(ShowTutor);
         }
     }
 }

@@ -136,7 +136,7 @@ public class Nature : MonoBehaviour
         NextHour?.Invoke(hour);
 
         isNight = hour < 5 || hour > 20;
-        StartCoroutine(FastVolumeChange(nightSounds, isNight ? 1f : 0f, secondsInHour));
+        StartCoroutine(FastVolumeChange(nightSounds, isNight ? 0.7f : 0f, secondsInHour));
 
         if (hour > 23)
         {

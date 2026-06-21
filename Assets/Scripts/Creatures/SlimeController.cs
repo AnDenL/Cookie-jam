@@ -34,7 +34,7 @@ namespace Creatures
                 
                 Skill chosen = owner.ActiveSkills
                     .OrderByDescending(s => s.Priority)
-                    .FirstOrDefault(s => s.CanUse(target));
+                    .FirstOrDefault(s => s.CanUse(targetDirection));
 
                 if (chosen != null)
                 {

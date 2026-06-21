@@ -109,7 +109,6 @@ MonoBehaviour:
     items: []
   skillTemplates:
   - {fileID: 11400000, guid: 2493c32de04565fa1a468c49cbc4a6c7, type: 2}
-  - {fileID: 11400000, guid: 5e91a2f96fe97c54890fafc74ba9534d, type: 2}
   passiveTemplates: []
   Speed: 1.5
   baseMovementSkill: {fileID: 11400000, guid: c2f2e561a5535104086af51fca3680a7, type: 2}

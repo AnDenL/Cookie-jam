@@ -63,6 +63,7 @@ public class FairyController : AIController
             if (Movement != null && targetDirection.magnitude != 0)
             {
                 owner.LookAt(owner.transform.position + (Vector3)targetDirection);
+                if (target == null) return;
                 if ((transform.position - target.transform.position).sqrMagnitude < 4) 
                 {
                     Movement.Use(Vector2.zero);

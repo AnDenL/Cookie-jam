@@ -6,6 +6,7 @@ namespace Creatures
     public class Interact : SelfSkill
     {
         public LayerMask interactMask;
+        public float radius = 1.5f;
         
         public override SkillType Type => SkillType.Utility;
 
@@ -22,7 +23,7 @@ namespace Creatures
 
         public override void Activate()
         {
-            var temp = Physics2D.OverlapCircleAll(owner.transform.position, 1.5f, interactMask);
+            var temp = Physics2D.OverlapCircleAll(owner.transform.position, radius, interactMask);
 
             Collider2D nearestCollider = null;
             float nearestDistance = float.MaxValue;
@@ -31,6 +32,7 @@ namespace Creatures
             {
                 if (collider.CompareTag("Interactable"))
                 {
+                    if (collider.transform == owner.transform.GetChild(0)) continue;
                     float distance = Vector2.Distance(owner.transform.position, collider.transform.position);
                     if (distance < nearestDistance)
                     {

@@ -150,6 +150,7 @@ MonoBehaviour:
   outlineMaterial: {fileID: 2100000, guid: dee6b960229a60d408dd5c51a87ff5f5, type: 2}
   sr: {fileID: 1324647087426256938}
   canBeInteracted: 1
+  Name: Craft table ui
 --- !u!114 &6762907053158829487
 MonoBehaviour:
   m_ObjectHideFlags: 0

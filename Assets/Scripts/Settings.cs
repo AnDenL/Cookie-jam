@@ -58,12 +58,12 @@ public class Settings : MonoBehaviour
 
     public void ChangeMusicVolume(float Musicvolume)
     {
-        Mixer.audioMixer.SetFloat("MusicVolume", NumToDecibel(Musicvolume));
+        Mixer.audioMixer.SetFloat("MusicVolume", Musicvolume == 0 ? -80 : NumToDecibel(Musicvolume));
     }
 
     public void ChangeEffectsVolume(float Effectsvolume)
     {
-        Mixer.audioMixer.SetFloat("EffectsVolume",NumToDecibel(Effectsvolume));
+        Mixer.audioMixer.SetFloat("EffectsVolume", Effectsvolume == 0 ? -80 : NumToDecibel(Effectsvolume));
     }
 
     public void LoadSettings(int currentResolutionIndex)
